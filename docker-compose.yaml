@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    command: node --env-file=./.env .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:latest
+    restart: unless-stopped
+    env_file: ./.env
+    environment:
+      - POSTGRES_USER=$DB_USER
+      - POSTGRES_PASSWORD=$DB_PASSWORD
+      - POSTGRES_DB=$DB_DATABASE
+    ports:
+      - $DB_PORT:$DB_PORT
+    healthcheck:
+      test: pg_isready -U $DB_USER -d $DB_DATABASE
+      interval: 1s
+      timeout: 5s
+      retries: 10
+
