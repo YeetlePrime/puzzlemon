@@ -3,8 +3,10 @@ version: '3.8'
 services:
   app:
     build: .
-    command: node --env-file=./.env .
     restart: unless-stopped
+    environment:
+      - DB_HOST=db
+    command: node --env-file=./.env .
     depends_on:
       db:
         condition: service_healthy
