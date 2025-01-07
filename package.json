@@ -1,0 +1,20 @@
+{
+  "name": "puzzlemon",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/YeetlePrime/puzzlemon#readme",
+  "bugs": {
+    "url": "https://github.com/YeetlePrime/puzzlemon/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YeetlePrime/puzzlemon.git"
+  },
+  "license": "MIT",
+  "author": "YeetlePrime",
+  "type": "module",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
