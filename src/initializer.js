@@ -43,7 +43,29 @@ export async function registerListeners(client) {
 			client.on(listener.event, (...args) => listener.callback(...args));
 		}
 	}
+
+	for (const handler of await loadCommandHandlers()) {
+		if (handler.once) {
+			client.once(handler.event, (...args) => handler.callback(...args));
+		} else {
+			client.on(handler.event, (...args) => handler.callback(...args));
+		}
+	}
+
 	console.log('Successfully registered all listeners.');
+}
+
+async function loadCommandHandlers() {
+	const handlers = [];
+
+	for (const file of getAllJSFilesFromDirectory(path.join(__dirname, 'commands'))) {
+		const { handler } = await import(file);
+		if (handler && handler.event !== null && handler.callback !== null) {
+			handlers.push(handler);
+		}
+	}
+
+	return handlers;
 }
 
 async function loadCommands() {
@@ -67,12 +89,12 @@ async function loadCommands() {
 		}
 
 		switch (deployType) {
-			case DeployType.Inactive: break;
-			case DeployType.Global:
+			case DeployType.INACTIVE: break;
+			case DeployType.GLOBAL:
 				commands.set(command.data.name, command);
 				globalCommands.push(command.data.toJSON());
 				break;
-			case DeployType.Dev:
+			case DeployType.DEV:
 				commands.set(command.data.name, command);
 				devCommands.push(command.data.toJSON());
 				break;

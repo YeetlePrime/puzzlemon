@@ -8,8 +8,8 @@ export function getAllJSFilesFromDirectory(directory) {
 }
 
 export const DeployType = {
-	Global: "Global",
-	Dev: "Dev",
-	Inactive: "Inactive"
+	GLOBAL: "GLOBAL",
+	DEV: "DEV",
+	INACTIVE: "INACTIVE"
 };
 
