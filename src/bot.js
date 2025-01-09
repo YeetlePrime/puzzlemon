@@ -1,7 +1,7 @@
 import { Client, GatewayIntentBits } from 'discord.js';
 
 import { token } from './config.js';
-import { createTablesIfNotExisting } from './db/index.js';
+import { createTablesIfNotExisting } from './db/puzzleRepository.js';
 import { registerCommands, registerListeners } from './initializer.js';
 
 

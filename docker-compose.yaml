@@ -15,6 +15,7 @@ services:
     restart: unless-stopped
     env_file: ./.env
     environment:
+      - TZ=$TIMEZONE
       - POSTGRES_USER=$DB_USER
       - POSTGRES_PASSWORD=$DB_PASSWORD
       - POSTGRES_DB=$DB_DATABASE
@@ -25,8 +26,8 @@ services:
       interval: 1s
       timeout: 5s
       retries: 10
-    volumes:
-      - db:/var/lib/postgresql/data
+#      volumes:
+#        - db:/var/lib/postgresql/data
 
 volumes:
   db:
