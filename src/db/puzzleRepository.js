@@ -1,5 +1,5 @@
 import logger from '../logger.js';
-import { query, getClient } from './index.js'
+import { query as executeQuery, getClient } from './index.js'
 
 export async function createNewPuzzleForGuild(guild_id, question, answer) {
 	const query = [""
@@ -38,21 +38,20 @@ async function createNewPuzzle(client, puzzle_chain_id, question, answer) {
 }
 
 export async function finishPuzzles(guildId) {
+	const query = [""
+		, "UPDATE puzzle_chains"
+		, "SET closed_ts = now()"
+		, "WHERE guild_id = $1"
+		, "AND closed_ts IS NULL;"
+	].join(' ');
 
-	//	const finishQuery = [""
-	//		, "UPDATE puzzles"
-	//		, "SET finished = TRUE"
-	//		, "WHERE guild_id = $1"
-	//		, "AND NOT finished;"
-	//	].join(' ');
-	//
-	//	try {
-	//		await query(finishQuery, [guildId]);
-	//	} catch (error) {
-	//		logger.error(`Could not clear puzzles for ${guildId}: ${error}`);
-	//
-	//		throw error;
-	//	}
+	try {
+		await executeQuery(query, [guildId]);
+	} catch (error) {
+		logger.error(`Could not clear puzzles for ${guildId}: ${error}`);
+
+		throw error;
+	}
 }
 
 export async function getActivePuzzles(guildId) {
