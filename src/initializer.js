@@ -4,6 +4,7 @@ import { Routes, Collection, REST } from 'discord.js';
 
 import { token, applicationId, guildId } from './config.js';
 import { DeployType, getAllJSFilesFromDirectory } from './utils.js';
+import logger from './logger.js';
 
 export async function registerCommands(client) {
 	const rest = new REST().setToken(token);
@@ -17,9 +18,10 @@ export async function registerCommands(client) {
 			{ body: devCommands },
 		);
 
-		console.log(`Successfully registered ${data.length} dev commands.`);
+
+		logger.info(`Successfully registered ${data.length} dev commands.`);
 	} catch (error) {
-		console.error(error);
+		logger.error(error)
 	}
 
 	try {
@@ -28,9 +30,9 @@ export async function registerCommands(client) {
 			{ body: globalCommands },
 		);
 
-		console.log(`Successfully registered ${data.length} lobal commands.`);
+		logger.info(`Successfully registered ${data.length} lobal commands.`);
 	} catch (error) {
-		console.error(error);
+		logger.error(error);
 	}
 }
 
@@ -52,7 +54,7 @@ export async function registerListeners(client) {
 		}
 	}
 
-	console.log('Successfully registered all listeners.');
+	logger.info('Successfully registered all listeners.');
 }
 
 async function loadCommandHandlers() {
@@ -78,13 +80,13 @@ async function loadCommands() {
 
 		// early return for invalid commands
 		if (!('execute' in command) || !('data' in command)) {
-			console.log(`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`);
+			logger.warn(`The command at ${file} is missing a required "data" or "execute" property.`);
 			continue;
 		} else if (!('name' in command.data)) {
-			console.log(`[WARNING] The command at ${file} is missing a required "data.name" property.`);
+			logger.warn(`The command at ${file} is missing a required "data.name" property.`);
 			continue;
 		} else if (commands.has(command.data.name)) {
-			console.log(`[WARNING] The command at ${file} could not be registered. A command with that name already exists.`);
+			logger.warn(`The command at ${file} could not be registered. A command with that name already exists.`);
 			continue;
 		}
 

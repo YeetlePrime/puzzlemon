@@ -1,4 +1,5 @@
-import { getClient } from './index.js'
+import logger from '../logger.js';
+import { query, getClient } from './index.js'
 
 export async function createTablesIfNotExisting() {
 	const puzzlesQuery = [""
@@ -26,13 +27,13 @@ export async function createTablesIfNotExisting() {
 		await client.query('BEGIN');
 
 		await client.query(puzzlesQuery);
-		console.log('Successfully created puzzles table.');
+		logger.info('Successfully created puzzles table.');
 		await client.query(questionsQuery);
-		console.log('Successfully created questions table.');
+		logger.info('Successfully created questions table.');
 
 		await client.query('COMMIT');
 	} catch (error) {
-		console.error(`Could not create tables: ${error}`);
+		logger.error(`Could not create tables: ${error}`);
 		await client.query('ROLLBACK');
 
 		throw error;
@@ -83,7 +84,7 @@ export async function createNewPuzzle(guild_id, question, answer) {
 
 		await client.query('COMMIT');
 	} catch (error) {
-		console.error(`Could not create question for ${guildId}: ${error}`);
+		logger.error(`Could not create question for ${guildId}: ${error}`);
 		await client.query('ROLLBACK');
 
 		throw error;
@@ -104,7 +105,7 @@ export async function finishPuzzles(guildId) {
 	try {
 		await query(finishQuery, [guildId]);
 	} catch (error) {
-		console.error(`Could not clear puzzles for ${guildId}: ${error}`);
+		logger.error(`Could not clear puzzles for ${guildId}: ${error}`);
 
 		throw error;
 	}
@@ -123,7 +124,7 @@ export async function getActivePuzzles(guildId) {
 	try {
 		return (await query(queryString, [guildId])).rows;
 	} catch (error) {
-		console.error(`Could not get puzzles ${guildId}: ${error}`);
+		logger.error(`Could not get puzzles ${guildId}: ${error}`);
 
 		throw error;
 	}
@@ -143,7 +144,7 @@ export async function answerPuzzle(guildId, answer) {
 	try {
 		return (await query(queryString, [guildId, answer])).rows;
 	} catch (error) {
-		console.error(`Could not submit answer ${guildId}: ${error}`);
+		logger.error(`Could not submit answer ${guildId}: ${error}`);
 
 		throw error;
 	}

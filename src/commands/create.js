@@ -2,6 +2,7 @@ import { Events, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilde
 
 import { DeployType } from '../utils.js';
 import { createNewPuzzle } from '../db/puzzleRepository.js';
+import logger from '../logger.js';
 
 export const deployType = DeployType.DEV;
 export const command = {
@@ -46,7 +47,7 @@ export const handler = {
 		try {
 			await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 			await createNewPuzzle(guildId, question, answer);
-			console.log(`Successfully created new question for ${guildId}.`)
+			logger.info(`Successfully created new question for ${guildId}.`)
 			await interaction.editReply({ content: 'Das Rätsel wurde erfolgreich angelegt!' });
 		} catch (error) {
 			await interaction.editReply({ content: 'Das Rätsel konnte nicht angelegt werden!' });
