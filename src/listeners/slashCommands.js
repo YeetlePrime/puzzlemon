@@ -1,8 +1,8 @@
 import { Events, MessageFlags } from 'discord.js';
 
-export const event = {
-	name: Events.InteractionCreate,
-	async execute(interaction) {
+export const listener = {
+	event: Events.InteractionCreate,
+	async callback(interaction) {
 		if (!interaction.isChatInputCommand()) return;
 
 		const command = interaction.client.commands.get(interaction.commandName);

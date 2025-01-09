@@ -1,9 +1,9 @@
 import { Events } from 'discord.js';
 
-export const event = {
-	name: Events.ClientReady,
+export const listener = {
+	event: Events.ClientReady,
 	once: true,
-	execute(client) {
+	async callback(client) {
 		console.log(`Ready! Logged in as ${client.user.tag}`);
 	},
 };

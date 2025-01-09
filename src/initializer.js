@@ -5,6 +5,47 @@ import { Routes, Collection, REST } from 'discord.js';
 import { token, applicationId, guildId } from './config.js';
 import { DeployType, getAllJSFilesFromDirectory } from './utils.js';
 
+export async function registerCommands(client) {
+	const rest = new REST().setToken(token);
+
+	const { commands, globalCommands, devCommands } = await loadCommands();
+	client.commands = commands;
+
+	try {
+		const data = await rest.put(
+			Routes.applicationGuildCommands(applicationId, guildId),
+			{ body: devCommands },
+		);
+
+		console.log(`Successfully registered ${data.length} dev commands.`);
+	} catch (error) {
+		console.error(error);
+	}
+
+	try {
+		const data = await rest.put(
+			Routes.applicationCommands(applicationId),
+			{ body: globalCommands },
+		);
+
+		console.log(`Successfully registered ${data.length} lobal commands.`);
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+export async function registerListeners(client) {
+	for (const file of getAllJSFilesFromDirectory(path.join(__dirname, 'listeners'))) {
+		const { listener } = await import(file);
+		if (listener.once) {
+			client.once(listener.event, (...args) => listener.callback(...args));
+		} else {
+			client.on(listener.event, (...args) => listener.callback(...args));
+		}
+	}
+	console.log('Successfully registered all listeners.');
+}
+
 async function loadCommands() {
 	const commands = new Collection();
 	const globalCommands = [];
@@ -45,32 +86,4 @@ async function loadCommands() {
 	};
 }
 
-export async function registerCommands(client) {
-	const rest = new REST().setToken(token);
-
-	const { commands, globalCommands, devCommands } = await loadCommands();
-	client.commands = commands;
-
-	try {
-		const data = await rest.put(
-			Routes.applicationGuildCommands(applicationId, guildId),
-			{ body: devCommands },
-		);
-
-		console.log(`Successfully registered ${data.length} dev commands.`);
-	} catch (error) {
-		console.error(error);
-	}
-
-	try {
-		const data = await rest.put(
-			Routes.applicationCommands(applicationId),
-			{ body: globalCommands },
-		);
-
-		console.log(`Successfully registered ${data.length} lobal commands.`);
-	} catch (error) {
-		console.error(error);
-	}
-}
 
