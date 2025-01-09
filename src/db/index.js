@@ -7,6 +7,38 @@ export async function query(text, params, callback) {
 	return pool.query(text, params, callback)
 }
 
+export async function getClient() {
+	const client = await pool.connect();
+
+	const query = client.query;
+	const release = client.release;
+
+	// set a timeout of 5 seconds, after which we will log this client's last query
+	const timeout = setTimeout(() => {
+		console.error('A client has been checked out for more than 5 seconds!')
+		console.error(`The last executed query on this client was: ${client.lastQuery}`)
+	}, 5000);
+
+	// monkey patch the query method to keep track of the last query executed
+	// rollback transaction if a query was not successful
+	client.query = (...args) => {
+		client.lastQuery = args
+		return query.apply(client, args);
+	}
+	client.release = () => {
+		// clear our timeout
+		clearTimeout(timeout);
+
+		// set the methods back to their old un-monkey-patched version
+		client.query = query;
+		client.release = release;
+
+		return release.apply(client);
+	}
+
+	return client
+}
+
 export async function createTablesIfNotExisting() {
 	const puzzlesQuery = [""
 		, "CREATE TABLE IF NOT EXISTS puzzles ("
@@ -25,13 +57,24 @@ export async function createTablesIfNotExisting() {
 		, ");"
 	].join('');
 
+	const client = await getClient();
 	try {
-		await query(puzzlesQuery);
+
+		await client.query('BEGIN');
+
+		await client.query(puzzlesQuery);
 		console.log('Successfully created puzzles table.');
-		await query(questionsQuery);
+		await client.query(questionsQuery);
 		console.log('Successfully created questions table.');
+
+		await client.query('COMMIT');
 	} catch (error) {
 		console.error(`Could not create tables: ${error}`);
+		await client.query('ROLLBACK');
+
+		throw error;
+	} finally {
+		client.release();
 	}
 }
 
