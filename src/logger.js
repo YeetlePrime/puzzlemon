@@ -35,7 +35,9 @@ const colors = {
 
 export default {
 	info(...args) {
-		console.info(colors.fg.blue + args.join(' ') + colors.reset);
+		process.stdout.write(colors.fg.blue);
+		console.info(...args);
+		process.stdout.write(colors.reset);
 	},
 	warn(...args) {
 		console.warn(colors.fg.yellow + args.join(' ') + colors.reset);

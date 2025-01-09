@@ -3,7 +3,7 @@ import logger from '../logger.js';
 
 export const listener = {
 	event: Events.InteractionCreate,
-	async execute(interaction) {
+	async callback(interaction) {
 		if (!interaction.isChatInputCommand()) return;
 
 		const command = interaction.client.commands.get(interaction.commandName);
@@ -18,9 +18,9 @@ export const listener = {
 		} catch (error) {
 			logger.error(error);
 			if (interaction.replied || interaction.deferred) {
-				await interaction.followUp({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
+				await interaction.followUp({ content: 'Der Befehl konnte nicht ausgeführt werden!', flags: MessageFlags.Ephemeral });
 			} else {
-				await interaction.reply({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
+				await interaction.reply({ content: 'Der Befehl konnte nicht ausgeführt werden!', flags: MessageFlags.Ephemeral });
 			}
 		}
 	},

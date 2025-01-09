@@ -1,7 +1,7 @@
 import { Events, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags } from 'discord.js';
 
 import { DeployType } from '../utils.js';
-import { createNewPuzzle } from '../db/puzzleRepository.js';
+import { createNewPuzzleForGuild } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
 export const deployType = DeployType.DEV;
@@ -46,7 +46,7 @@ export const handler = {
 
 		try {
 			await interaction.deferReply({ flags: MessageFlags.Ephemeral });
-			await createNewPuzzle(guildId, question, answer);
+			await createNewPuzzleForGuild(guildId, question, answer);
 			logger.info(`Successfully created new question for ${guildId}.`)
 			await interaction.editReply({ content: 'Das Rätsel wurde erfolgreich angelegt!' });
 		} catch (error) {

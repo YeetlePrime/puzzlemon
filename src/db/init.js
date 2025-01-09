@@ -11,7 +11,30 @@ async function createPuzzleChainsTable(client) {
 		, ");"
 	].join(' ');
 
+	const functionQuery = [""
+		, "CREATE OR REPLACE FUNCTION get_or_create_puzzle_chain(p_guild_id TEXT)"
+		, "RETURNS puzzle_chains AS $$"
+		, "DECLARE"
+		, "	result_row puzzle_chains%ROWTYPE;"
+		, "BEGIN"
+		, "	SELECT * INTO result_row "
+		, "	FROM puzzle_chains"
+		, "	WHERE guild_id = p_guild_id"
+		, "	AND closed_ts IS NULL;"
+
+		, "	IF NOT FOUND THEN"
+		, "		INSERT INTO puzzle_chains(guild_id)"
+		, "		VALUES (p_guild_id)"
+		, "		RETURNING * INTO result_row;"
+		, "	END IF;"
+
+		, "	RETURN result_row;"
+		, "END;"
+		, "$$ LANGUAGE plpgsql;"
+	].join(' ');
+
 	await client.query(query);
+	await client.query(functionQuery);
 }
 
 async function createPuzzlesTable(client) {
@@ -35,9 +58,10 @@ async function createPuzzlesTable(client) {
 		, "$$"
 		, "DECLARE"
 		, "	next_index INT;"
+		, "	new_puzzle_chain_id INT;"
 		, "BEGIN"
 		, "	SELECT COALESCE(MAX(index), 0) + 1 FROM puzzles"
-		, "	WHERE puzzle_chain_id = NEW.puzzle_chain.id"
+		, "	WHERE puzzle_chain_id = NEW.puzzle_chain_id"
 		, "	INTO next_index;"
 
 		, "	NEW.index := next_index;"
@@ -56,7 +80,7 @@ async function createPuzzlesTable(client) {
 
 	await client.query(query);
 	await client.query(triggerFunctionQuery);
-	await client.query(triggerFunctionQuery);
+	await client.query(triggerQuery);
 }
 
 export async function initTables() {
