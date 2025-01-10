@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     environment:
       - DB_HOST=db
-    command: node --env-file=./.env .
+    command: node --env-file=./.env build/bot.js
     depends_on:
       db:
         condition: service_healthy

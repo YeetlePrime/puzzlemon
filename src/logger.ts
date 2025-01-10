@@ -1,3 +1,4 @@
+import { WriteStream } from 'tty';
 import util from 'util';
 
 const colors = {
@@ -36,16 +37,16 @@ const colors = {
 };
 
 export default {
-	info(...args) {
+	info(...args: any[]) {
 		this._log(colors.fg.blue, process.stdout, '[INFO]', ...args);
 	},
-	warn(...args) {
+	warn(...args: any[]) {
 		this._log(colors.fg.yellow, process.stderr, '[WARN]', ...args);
 	},
-	error(...args) {
+	error(...args: any[]) {
 		this._log(colors.fg.red, process.stderr, '[ERROR]', ...args);
 	},
-	_log(color, stream, ...args) {
+	_log(color: string, stream: WriteStream, ...args: any[]) {
 		// Use util.format to handle objects and formatting
 		const formattedMessage = args.map(arg =>
 			typeof arg === 'object'
