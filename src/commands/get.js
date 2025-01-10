@@ -37,7 +37,6 @@ export const command = {
 					embeds: embeds
 				});
 			}
-			throw new Error('Test-error');
 
 			logger.info(`Successfully retrieved puzzles for ${interaction.guildId}.`);
 		} catch (err) {
