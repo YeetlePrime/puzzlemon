@@ -4,7 +4,7 @@ import { DeployType } from '../utils.js';
 import { answerPuzzle } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
-export const deployType = DeployType.DEV;
+export const deployType = DeployType.GLOBAL;
 export const command = {
 	data: new SlashCommandBuilder()
 		.setName('answer')

@@ -4,11 +4,12 @@ import { DeployType } from '../utils.js';
 import { getActivePuzzlesForUser } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
-export const deployType = DeployType.DEV;
+export const deployType = DeployType.GLOBAL;
 export const command = {
 	data: new SlashCommandBuilder()
 		.setName('get')
-		.setDescription('Zeige aktive Rätsel.'),
+		.setDescription('Zeige aktive Rätsel.')
+		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 	async execute(interaction) {
 		const guildId = interaction.guildId;
 		const userId = interaction.member.id;

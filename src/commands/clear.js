@@ -1,14 +1,16 @@
-import { ButtonStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags, ButtonBuilder } from 'discord.js';
+import { ButtonStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags, ButtonBuilder, PermissionFlagsBits } from 'discord.js';
 
 import { DeployType } from '../utils.js';
 import { finishPuzzles } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
-export const deployType = DeployType.DEV;
+export const deployType = DeployType.GLOBAL;
 export const command = {
 	data: new SlashCommandBuilder()
 		.setName('clear')
-		.setDescription('Lösche alle aktiven Rätsel.'),
+		.setDescription('Lösche alle aktiven Rätsel.')
+		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
+	,
 	async execute(interaction) {
 		const confirmButton = new ButtonBuilder()
 			.setCustomId('confirmClear')

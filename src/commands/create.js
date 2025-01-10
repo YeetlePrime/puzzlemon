@@ -4,11 +4,12 @@ import { DeployType } from '../utils.js';
 import { createNewPuzzleForGuild } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
-export const deployType = DeployType.DEV;
+export const deployType = DeployType.GLOBAL;
 export const command = {
 	data: new SlashCommandBuilder()
 		.setName('create')
-		.setDescription('Erstelle ein neues Rätsel.'),
+		.setDescription('Erstelle ein neues Rätsel.')
+		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 	async execute(interaction) {
 		const modal = new ModalBuilder()
 			.setCustomId('createModal')
