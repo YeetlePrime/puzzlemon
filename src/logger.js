@@ -37,13 +37,13 @@ const colors = {
 
 export default {
 	info(...args) {
-		this._log(colors.fg.blue, process.stdout, ...args);
+		this._log(colors.fg.blue, process.stdout, '[INFO]', ...args);
 	},
 	warn(...args) {
-		this._log(colors.fg.yellow, process.stderr, ...args);
+		this._log(colors.fg.yellow, process.stderr, '[WARN]', ...args);
 	},
 	error(...args) {
-		this._log(colors.fg.red, process.stderr, ...args);
+		this._log(colors.fg.red, process.stderr, '[ERROR]', ...args);
 	},
 	_log(color, stream, ...args) {
 		// Use util.format to handle objects and formatting
