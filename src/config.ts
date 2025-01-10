@@ -1,12 +1,18 @@
-export const token = process.env.TOKEN;
-export const applicationId = process.env.APPLICATION_ID;
-export const guildId = process.env.GUILD_ID;
+export const token: string = orDefault(process.env.TOKEN, '');
+export const applicationId: string = orDefault(process.env.APPLICATION_ID, '');
+export const guildId: string = orDefault(process.env.GUILD_ID, '');
 export const dbConfig = {
-	user: process.env.DB_USER,
-	password: process.env.DB_PASSWORD,
-	host: process.env.DB_HOST,
-	port: process.env.DB_PORT,
-	database: process.env.DB_DATABASE
+	user: orDefault(process.env.DB_USER, 'postgres'),
+	password: orDefault(process.env.DB_PASSWORD, 'postgres'),
+	host: orDefault(process.env.DB_HOST, 'localhost'),
+	port: orDefaultNumber(parseInt(process.env.DB_PORT as string), 5432),
+	database: orDefault(process.env.DB_DATABASE, 'postgres')
 }
 
+function orDefault(value: string | undefined, defaultValue: string): string {
+	return typeof value === 'string' ? value as string : defaultValue;
+}
 
+function orDefaultNumber(value: number | undefined, defaultValue: number): number {
+	return typeof value === 'number' ? value as number : defaultValue;
+}
