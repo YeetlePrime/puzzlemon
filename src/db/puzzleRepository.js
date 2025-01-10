@@ -45,17 +45,18 @@ export async function finishPuzzles(guildId) {
 	await executeQuery(query, [guildId]);
 }
 
-export async function getActivePuzzles(guildId) {
-	const query = [""
-		, "SELECT p.question, p.answer, p.index, p.generated_ts FROM puzzle_chains pc"
-		, "JOIN puzzles p"
-		, "ON p.puzzle_chain_id = pc.id"
-		, "WHERE pc.guild_id = $1"
-		, "AND pc.closed_ts IS NULL"
-		, "ORDER BY p.index DESC;"
-	].join(' ');
+export async function getActivePuzzlesForUser(guildId, userId) {
+	const query = `
+		SELECT p.question, p.answer, p.index, a.completed_ts FROM puzzle_chains pc
+		JOIN puzzles p ON pc.id = p.puzzle_chain_id
+		LEFT JOIN answers a ON p.id = a.puzzle_id
+			AND a.user_id = $2
+		WHERE pc.guild_id = $1
+		AND pc.closed_ts IS NULL
+		ORDER BY p.index ASC;
+	`;
 
-	return (await executeQuery(query, [guildId])).rows;
+	return (await executeQuery(query, [guildId, userId])).rows;
 }
 
 export async function answerPuzzle(guildId, userId, answer) {
@@ -85,7 +86,6 @@ export async function answerPuzzle(guildId, userId, answer) {
 		}
 
 		await client.query('COMMIT');
-		null.value;
 
 		return result.rows;
 	} catch (err) {
