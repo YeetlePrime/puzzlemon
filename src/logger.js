@@ -1,3 +1,5 @@
+import util from 'util';
+
 const colors = {
 	reset: "\x1b[0m",
 	bright: "\x1b[1m",
@@ -35,18 +37,26 @@ const colors = {
 
 export default {
 	info(...args) {
-		process.stdout.write(colors.fg.blue);
-		console.info('[INFO]', ...args);
-		process.stdout.write(colors.reset);
+		this._log(colors.fg.blue, process.stdout, ...args);
 	},
 	warn(...args) {
-		process.stderr.write(colors.fg.yellow);
-		console.warn('[WARN]', ...args);
-		process.stderr.write(colors.reset);
+		this._log(colors.fg.yellow, process.stderr, ...args);
 	},
 	error(...args) {
-		process.stderr.write(colors.fg.red);
-		console.error('[ERROR]', ...args);
-		process.stderr.write(colors.reset);
+		this._log(colors.fg.red, process.stderr, ...args);
 	},
+	_log(color, stream, ...args) {
+		// Use util.format to handle objects and formatting
+		const formattedMessage = args.map(arg =>
+			typeof arg === 'object'
+				? util.inspect(arg, { depth: null, colors: false }) // Pretty-print objects
+				: arg
+		).join(' ');
+
+		// Split into lines and apply color
+		const messageLines = formattedMessage.split('\n').map(line => `${color}${line}${colors.reset}`);
+
+		// Write the colored output
+		stream.write(messageLines.join('\n') + '\n');
+	}
 }
