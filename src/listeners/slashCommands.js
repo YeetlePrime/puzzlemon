@@ -15,12 +15,12 @@ export const listener = {
 
 		try {
 			await command.execute(interaction);
-		} catch (error) {
-			logger.error(error);
+		} catch (err) {
+			logger.error('Unexpected error:', err.stack);
 			if (interaction.replied || interaction.deferred) {
-				await interaction.followUp({ content: 'Der Befehl konnte nicht ausgeführt werden!', flags: MessageFlags.Ephemeral });
+				await interaction.followUp({ content: 'Ein unerwarteter Fehler ist aufgetreten!', flags: MessageFlags.Ephemeral });
 			} else {
-				await interaction.reply({ content: 'Der Befehl konnte nicht ausgeführt werden!', flags: MessageFlags.Ephemeral });
+				await interaction.reply({ content: 'Ein unerwarteter Fehler ist aufgetreten!', flags: MessageFlags.Ephemeral });
 			}
 		}
 	},

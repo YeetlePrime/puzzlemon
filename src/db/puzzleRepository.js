@@ -1,4 +1,3 @@
-import logger from '../logger.js';
 import { query as executeQuery, getClient } from './index.js'
 
 export async function createNewPuzzleForGuild(guild_id, question, answer) {
@@ -17,11 +16,9 @@ export async function createNewPuzzleForGuild(guild_id, question, answer) {
 		await client.query('COMMIT');
 		return result;
 	} catch (error) {
-		logger.error(error, error.stackTrace);
-
 		await client.query('ROLLBACK');
 
-		throw error;
+		throw new Error(err.message, { cause: err });
 	} finally {
 		client.release();
 	}
@@ -45,13 +42,7 @@ export async function finishPuzzles(guildId) {
 		, "AND closed_ts IS NULL;"
 	].join(' ');
 
-	try {
-		await executeQuery(query, [guildId]);
-	} catch (error) {
-		logger.error(`Could not clear puzzles for ${guildId}: ${error}`);
-
-		throw error;
-	}
+	await executeQuery(query, [guildId]);
 }
 
 export async function getActivePuzzles(guildId) {
@@ -64,13 +55,7 @@ export async function getActivePuzzles(guildId) {
 		, "ORDER BY p.index DESC;"
 	].join(' ');
 
-	try {
-		return (await executeQuery(query, [guildId])).rows;
-	} catch (error) {
-		logger.error(`Could not get puzzles ${guildId}: ${error}`);
-
-		throw error;
-	}
+	return (await executeQuery(query, [guildId])).rows;
 }
 
 export async function answerPuzzle(guildId, userId, answer) {
@@ -100,13 +85,13 @@ export async function answerPuzzle(guildId, userId, answer) {
 		}
 
 		await client.query('COMMIT');
+		null.value;
 
 		return result.rows;
-	} catch (error) {
-		logger.error(`Could not submit answer ${guildId}:`, error.stack);
+	} catch (err) {
 		await client.query('ROLLBACK');
 
-		throw error;
+		throw new Error(err.message, { cause: err });
 	} finally {
 		client.release();
 	}

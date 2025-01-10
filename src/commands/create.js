@@ -47,9 +47,10 @@ export const handler = {
 		try {
 			await interaction.deferReply({ flags: MessageFlags.Ephemeral });
 			await createNewPuzzleForGuild(guildId, question, answer);
-			logger.info(`Successfully created new question for ${guildId}.`)
+			logger.info(`Successfully created new puzzle for ${guildId}.`)
 			await interaction.editReply({ content: 'Das Rätsel wurde erfolgreich angelegt!' });
-		} catch (error) {
+		} catch (err) {
+			logger.error(`Could not create new puzzle for ${guildId}:`, err.stack)
 			await interaction.editReply({ content: 'Das Rätsel konnte nicht angelegt werden!' });
 		}
 	}

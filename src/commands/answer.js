@@ -45,10 +45,12 @@ export const handler = {
 			const puzzles = await answerPuzzle(guildId, userId, answer);
 
 			if (puzzles.length === 0) {
+				logger.info(`User ${userId} gave a wrong answer in guild ${guildId}.`, err.stack)
 				await interaction.editReply({
 					content: 'Die Antwort ist leider falsch'
 				});
 			} else {
+				logger.info(`User ${userId} gave a right answer in guild ${guildId}.`, err.stack)
 				const embeds = puzzles
 					.map(puzzle => {
 						return new EmbedBuilder()
@@ -61,11 +63,10 @@ export const handler = {
 					embeds: embeds
 				});
 			}
-		} catch (error) {
-			logger.error('IN HANDLER', error.stack)
-			await interaction.editReply({
-				content: 'Die Antwort konnte nicht überprüft werden.'
-			});
+		} catch (err) {
+			logger.error(`Could not submit answer ${answer} for ${userId} in ${guildId}`, err.stack)
+
+			throw new Error(err.message, { cause: err });
 		}
 	}
 }

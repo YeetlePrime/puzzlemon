@@ -2,6 +2,7 @@ import { ButtonStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags, Butto
 
 import { DeployType } from '../utils.js';
 import { finishPuzzles } from '../db/puzzleRepository.js';
+import logger from '../logger.js';
 
 export const deployType = DeployType.DEV;
 export const command = {
@@ -35,13 +36,16 @@ export const command = {
 				try {
 					await finishPuzzles(confirmation.guildId);
 					await confirmation.update({ content: `Alle Rätsel wurden erfolgreich gelöscht.`, components: [] });
-				} catch (error) {
+					logger.info(`Successfully cleared puzzles for ${interaction.guildId}:`);
+				} catch (err) {
+					logger.error(`Could not clear puzzles for ${interaction.guildId}:`, err.stack);
 					await confirmation.update({ content: `Rätsel konnten nicht gelöscht werden.`, components: [] });
 				}
 			} else if (confirmation.customId === 'cancelClear') {
 				await interaction.deleteReply();
 			}
-		} catch (e) {
+		} catch (err) {
+			logger.error(`User ${interaction.member.id} in guild ${interaction.guildId} took too long to press the clear button.`, err.stack);
 			await interaction.editReply({ content: 'Du hast zu lange zum Bestätigen gebraucht.', components: [] });
 		}
 
