@@ -1,4 +1,4 @@
-import { Events, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags } from 'discord.js';
+import { Events, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags, PermissionFlagsBits } from 'discord.js';
 
 import { DeployType } from '../utils.js';
 import { createNewPuzzleForGuild } from '../db/puzzleRepository.js';

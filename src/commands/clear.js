@@ -9,8 +9,7 @@ export const command = {
 	data: new SlashCommandBuilder()
 		.setName('clear')
 		.setDescription('Lösche alle aktiven Rätsel.')
-		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator)
-	,
+		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 	async execute(interaction) {
 		const confirmButton = new ButtonBuilder()
 			.setCustomId('confirmClear')
