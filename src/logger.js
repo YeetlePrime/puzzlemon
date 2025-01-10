@@ -36,17 +36,17 @@ const colors = {
 export default {
 	info(...args) {
 		process.stdout.write(colors.fg.blue);
-		console.info(...args);
+		console.info('[INFO]', ...args);
 		process.stdout.write(colors.reset);
 	},
 	warn(...args) {
-		process.stdout.write(colors.fg.yellow);
-		console.warn(...args);
-		process.stdout.write(colors.reset);
+		process.stderr.write(colors.fg.yellow);
+		console.warn('[WARN]', ...args);
+		process.stderr.write(colors.reset);
 	},
 	error(...args) {
-		process.stdout.write(colors.fg.red);
-		console.error(...args);
-		process.stdout.write(colors.reset);
+		process.stderr.write(colors.fg.red);
+		console.error('[ERROR]', ...args);
+		process.stderr.write(colors.reset);
 	},
 }
