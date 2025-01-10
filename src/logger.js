@@ -40,9 +40,13 @@ export default {
 		process.stdout.write(colors.reset);
 	},
 	warn(...args) {
-		console.warn(colors.fg.yellow + args.join(' ') + colors.reset);
+		process.stdout.write(colors.fg.yellow);
+		console.warn(...args);
+		process.stdout.write(colors.reset);
 	},
 	error(...args) {
-		console.error(colors.fg.red + args.join(' ') + colors.reset);
+		process.stdout.write(colors.fg.red);
+		console.error(...args);
+		process.stdout.write(colors.reset);
 	},
 }
