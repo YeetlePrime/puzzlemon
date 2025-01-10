@@ -31,7 +31,7 @@ export const command = {
 					completedPuzzles.map(puzzle => {
 						return {
 							name: `Rätsel ${puzzle.index}`,
-							value: `${puzzle.answer}\n\nAntwort: ${puzzle.answer}`,
+							value: `${puzzle.question}\n\nAntwort: ${puzzle.answer}`,
 							inline: false
 						};
 					})
