@@ -55,22 +55,23 @@ export async function finishPuzzles(guildId) {
 }
 
 export async function getActivePuzzles(guildId) {
-	//	const queryString = [""
-	//		, "SELECT q.question, q.answer, q.question_number FROM puzzles p"
-	//		, "JOIN questions q"
-	//		, "ON p.id = q.puzzle_id"
-	//		, "AND p.guild_id = $1"
-	//		, "AND NOT p.finished"
-	//		, "ORDER BY q.question_number;"
-	//	].join(' ');
-	//
-	//	try {
-	//		return (await query(queryString, [guildId])).rows;
-	//	} catch (error) {
-	//		logger.error(`Could not get puzzles ${guildId}: ${error}`);
-	//
-	//		throw error;
-	//	}
+	const query = [""
+		, "SELECT p.question, p.answer, p.index, p.generated_ts FROM puzzle_chains pc"
+		, "JOIN puzzles p"
+		, "ON p.puzzle_chain_id = pc.id"
+		, "WHERE pc.guild_id = $1"
+		, "AND pc.closed_ts IS NULL"
+		, "ORDER BY pc.generated_ts DESC"
+		, "LIMIT 1;"
+	].join(' ');
+
+	try {
+		return (await query(queryString, [guildId])).rows;
+	} catch (error) {
+		logger.error(`Could not get puzzles ${guildId}: ${error}`);
+
+		throw error;
+	}
 }
 
 export async function answerPuzzle(guildId, answer) {
