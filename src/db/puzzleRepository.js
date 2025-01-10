@@ -61,12 +61,11 @@ export async function getActivePuzzles(guildId) {
 		, "ON p.puzzle_chain_id = pc.id"
 		, "WHERE pc.guild_id = $1"
 		, "AND pc.closed_ts IS NULL"
-		, "ORDER BY pc.generated_ts DESC"
-		, "LIMIT 1;"
+		, "ORDER BY p.index DESC;"
 	].join(' ');
 
 	try {
-		return (await query(queryString, [guildId])).rows;
+		return (await executeQuery(query, [guildId])).rows;
 	} catch (error) {
 		logger.error(`Could not get puzzles ${guildId}: ${error}`);
 
@@ -74,23 +73,42 @@ export async function getActivePuzzles(guildId) {
 	}
 }
 
-export async function answerPuzzle(guildId, answer) {
-	//	const queryString = [""
-	//		, "SELECT q.question, q.answer, q.question_number FROM puzzles p"
-	//		, "JOIN questions q"
-	//		, "ON p.id = q.puzzle_id"
-	//		, "WHERE p.guild_id = $1"
-	//		, "AND NOT p.finished"
-	//		, "AND LOWER(q.answer) = LOWER($2)"
-	//		, "ORDER BY q.question_number"
-	//	].join(' ');
-	//
-	//	try {
-	//		return (await query(queryString, [guildId, answer])).rows;
-	//	} catch (error) {
-	//		logger.error(`Could not submit answer ${guildId}: ${error}`);
-	//
-	//		throw error;
-	//	}
+export async function answerPuzzle(guildId, userId, answer) {
+	const query = [""
+		, "SELECT p.id, p.question, p.answer, p.index, p.generated_ts FROM puzzle_chains pc"
+		, "JOIN puzzles p"
+		, "ON p.puzzle_chain_id = pc.id"
+		, "WHERE pc.guild_id = $1"
+		, "AND pc.closed_ts IS NULL"
+		, "AND LOWER(p.answer) = LOWER($2)"
+		, "ORDER BY p.index;"
+	].join(' ');
+	const updateQuery = [""
+		, "INSERT INTO answers(puzzle_id, user_id)"
+		, "VALUES ($1, $2)"
+		, "ON CONFLICT (puzzle_id, user_id) DO NOTHING;"
+	].join(' ');
+
+	const client = await getClient();
+	try {
+		await client.query('BEGIN');
+
+		const result = await client.query(query, [guildId, answer]);
+
+		for (const row of result.rows) {
+			await client.query(updateQuery, [row.id, userId]);
+		}
+
+		await client.query('COMMIT');
+
+		return result.rows;
+	} catch (error) {
+		logger.error(`Could not submit answer ${guildId}:`, error.stack);
+		await client.query('ROLLBACK');
+
+		throw error;
+	} finally {
+		client.release();
+	}
 }
 

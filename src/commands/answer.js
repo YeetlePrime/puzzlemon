@@ -2,6 +2,7 @@ import { ActionRowBuilder, SlashCommandBuilder, MessageFlags, Events, ModalBuild
 
 import { DeployType } from '../utils.js';
 import { answerPuzzle } from '../db/puzzleRepository.js';
+import logger from '../logger.js';
 
 export const deployType = DeployType.DEV;
 export const command = {
@@ -23,7 +24,6 @@ export const command = {
 		modal.addComponents(firstActionRow);
 
 		await interaction.showModal(modal);
-
 	}
 };
 
@@ -34,6 +34,7 @@ export const handler = {
 		if (interaction.customId !== 'answer') return;
 
 		const guildId = interaction.guildId;
+		const userId = interaction.member.id;
 		const answer = interaction.fields.getTextInputValue('antwortInput');
 
 		try {
@@ -41,18 +42,18 @@ export const handler = {
 				flags: MessageFlags.Ephemeral
 			});
 
-			const questions = await answerPuzzle(guildId, answer);
+			const puzzles = await answerPuzzle(guildId, userId, answer);
 
-			if (questions.length === 0) {
+			if (puzzles.length === 0) {
 				await interaction.editReply({
 					content: 'Die Antwort ist leider falsch'
 				});
 			} else {
-				const embeds = questions
-					.map(question => {
+				const embeds = puzzles
+					.map(puzzle => {
 						return new EmbedBuilder()
-							.setTitle(`Rätsel ${question.question_number}`)
-							.setDescription(question.question);
+							.setTitle(`Rätsel ${puzzle.index}`)
+							.setDescription(puzzle.question);
 					})
 
 				await interaction.editReply({
@@ -61,6 +62,7 @@ export const handler = {
 				});
 			}
 		} catch (error) {
+			logger.error('IN HANDLER', error.stack)
 			await interaction.editReply({
 				content: 'Die Antwort konnte nicht überprüft werden.'
 			});

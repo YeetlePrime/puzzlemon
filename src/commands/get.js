@@ -13,22 +13,21 @@ export const command = {
 			await interaction.deferReply({
 				flags: MessageFlags.Ephemeral
 			});
-			const questions = await getActivePuzzles(interaction.guildId);
+			const puzzles = await getActivePuzzles(interaction.guildId);
 
-			if (questions.length === 0) {
+			if (puzzles.length === 0) {
 				await interaction.editReply({
 					content: 'Es gibt keine Rätsel.'
 				});
 			} else {
-				const embeds = questions
-					.sort((question1, question2) => question2.quesion_number - question1.question_number)
-					.map(question => {
+				const embeds = puzzles
+					.map(puzzle => {
 						return new EmbedBuilder()
-							.setTitle(`Rätsel ${question.question_number}`)
-							.setDescription(question.question)
+							.setTitle(`Rätsel ${puzzle.index}`)
+							.setDescription(puzzle.question)
 							.setFields([{
 								name: 'Antwort',
-								value: question.answer,
+								value: puzzle.answer,
 								inline: false
 							}]);
 					});
@@ -37,8 +36,8 @@ export const command = {
 					embeds: embeds
 				});
 			}
-
 		} catch (error) {
+			console.log(error);
 			await interaction.editReply({
 				content: 'Rätsel konnten nicht geladen werden.'
 			});
