@@ -7,7 +7,7 @@ export const command = {
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Basic ping command.')
-		.setDefaultMemberPermissions(PermissionFlagsBits.SendMessages),
+		.setDefaultMemberPermissions(PermissionFlagsBits.UseApplicationCommands),
 	async execute(interaction) {
 		await interaction.reply('Pong!');
 	}

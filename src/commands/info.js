@@ -9,7 +9,7 @@ export const command = {
 	data: new SlashCommandBuilder()
 		.setName('info')
 		.setDescription('Zeigt deinen Status für die aktiven Rätsel.')
-		.setDefaultMemberPermissions(PermissionFlagsBits.SendMessages),
+		.setDefaultMemberPermissions(PermissionFlagsBits.UseApplicationCommands),
 	async execute(interaction) {
 		const guildId = interaction.guildId;
 		const userId = interaction.member.id;

@@ -9,7 +9,7 @@ export const command = {
 	data: new SlashCommandBuilder()
 		.setName('answer')
 		.setDescription('Gibt eine Antwort auf die Rätsel.')
-		.setDefaultMemberPermissions(PermissionFlagsBits.SendMessages),
+		.setDefaultMemberPermissions(PermissionFlagsBits.UseApplicationCommands),
 	async execute(interaction) {
 		const modal = new ModalBuilder()
 			.setCustomId('answer')
