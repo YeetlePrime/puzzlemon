@@ -1,4 +1,4 @@
-import { PermissionFlagsBits, SlashCommandBuilder } from 'discord.js';
+import { SlashCommandBuilder } from 'discord.js';
 
 import { DeployType } from '../utils.js';
 
@@ -7,7 +7,7 @@ export const command = {
 	data: new SlashCommandBuilder()
 		.setName('ping')
 		.setDescription('Basic ping command.')
-		.setDefaultMemberPermissions(PermissionFlagsBits.UseApplicationCommands),
+		.setDefaultMemberPermissions(),
 	async execute(interaction) {
 		await interaction.reply('Pong!');
 	}
