@@ -1,4 +1,4 @@
-import { ActionRowBuilder, SlashCommandBuilder, MessageFlags, Events, ModalBuilder, TextInputStyle, EmbedBuilder, TextInputBuilder, PermissionFlagsBits } from 'discord.js';
+import { ActionRowBuilder, SlashCommandBuilder, MessageFlags, Events, ModalBuilder, TextInputStyle, EmbedBuilder, TextInputBuilder } from 'discord.js';
 
 import { DeployType } from '../utils.js';
 import { answerPuzzle } from '../db/puzzleRepository.js';
@@ -8,8 +8,7 @@ export const deployType = DeployType.GLOBAL;
 export const command = {
 	data: new SlashCommandBuilder()
 		.setName('answer')
-		.setDescription('Gibt eine Antwort auf die Rätsel.')
-		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+		.setDescription('Gibt eine Antwort auf die Rätsel.'),
 	async execute(interaction) {
 		const modal = new ModalBuilder()
 			.setCustomId('answer')

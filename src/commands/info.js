@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, MessageFlags, EmbedBuilder, PermissionFlagsBits } from 'discord.js';
+import { SlashCommandBuilder, MessageFlags, EmbedBuilder } from 'discord.js';
 
 import { DeployType } from '../utils.js';
 import { getActivePuzzlesForUser } from '../db/puzzleRepository.js';
@@ -8,8 +8,7 @@ export const deployType = DeployType.GLOBAL;
 export const command = {
 	data: new SlashCommandBuilder()
 		.setName('info')
-		.setDescription('Zeigt deinen Status für die aktiven Rätsel.')
-		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
+		.setDescription('Zeigt deinen Status für die aktiven Rätsel.'),
 	async execute(interaction) {
 		const guildId = interaction.guildId;
 		const userId = interaction.member.id;
