@@ -1,15 +1,15 @@
-import { ActionRowBuilder, SlashCommandBuilder, MessageFlags, Events, ModalBuilder, TextInputStyle, EmbedBuilder, TextInputBuilder } from 'discord.js';
+import { ActionRowBuilder, SlashCommandBuilder, MessageFlags, Events, ModalBuilder, TextInputStyle, EmbedBuilder, TextInputBuilder, BaseInteraction } from 'discord.js';
 
-import { DeployType } from '../utils.js';
+import { Command, DeployType, InteractionEventHandler } from '../utils.js';
 import { answerPuzzle } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
 export const deployType = DeployType.GLOBAL;
-export const command = {
+export const command: Command = {
+	deployType: DeployType.GLOBAL,
 	data: new SlashCommandBuilder()
 		.setName('answer')
-		.setDescription('Gibt eine Antwort auf die Rätsel.')
-		.setDefaultMemberPermissions(),
+		.setDescription('Gibt eine Antwort auf die Rätsel.'),
 	async execute(interaction) {
 		const modal = new ModalBuilder()
 			.setCustomId('answer')
@@ -20,22 +20,22 @@ export const command = {
 			.setLabel("Antwort")
 			.setStyle(TextInputStyle.Short);
 
-		const firstActionRow = new ActionRowBuilder().addComponents(antwortInput);
+		const firstActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(antwortInput);
 
-		modal.addComponents(firstActionRow);
+		modal.addComponents(firstActionRow)
 
 		await interaction.showModal(modal);
 	}
 };
 
-export const handler = {
+export const handler: InteractionEventHandler = {
 	event: Events.InteractionCreate,
 	async execute(interaction) {
 		if (!interaction.isModalSubmit()) return;
 		if (interaction.customId !== 'answer') return;
 
 		const guildId = interaction.guildId;
-		const userId = interaction.member.id;
+		const userId = interaction.user.id;
 		const answer = interaction.fields.getTextInputValue('antwortInput');
 
 		try {
@@ -52,7 +52,7 @@ export const handler = {
 				logger.info(`User ${userId} gave a wrong answer in guild ${guildId}.`)
 			} else {
 				const embeds = puzzles
-					.map(puzzle => {
+					.map((puzzle: any) => {
 						return new EmbedBuilder()
 							.setTitle(`Rätsel ${puzzle.index}`)
 							.setDescription(puzzle.question);
@@ -65,7 +65,11 @@ export const handler = {
 				logger.info(`User ${userId} gave a right answer in guild ${guildId}.`)
 			}
 		} catch (err) {
-			logger.error(`Could not submit answer ${answer} for ${userId} in ${guildId}`, err.stack)
+			if (err instanceof Error) {
+				logger.error(`Could not submit answer ${answer} for ${userId} in ${guildId}`, err.stack)
+			} else {
+				logger.error(new Error(`Could not submit answer ${answer} for ${userId} in ${guildId}`).stack);
+			}
 
 			await interaction.editReply({
 				content: 'Die Antwort konnte nicht überprüft werden.',

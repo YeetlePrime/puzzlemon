@@ -1,4 +1,4 @@
-import { BaseInteraction, Client, Events } from 'discord.js';
+import { BaseInteraction, Client, CommandInteraction, Events, SlashCommandBuilder } from 'discord.js';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -26,3 +26,10 @@ export type InteractionEventHandler = {
 }
 
 export type EventHandler = ClientEventHandler | InteractionEventHandler;
+
+export type Command = {
+	deployType: DeployType,
+	data: SlashCommandBuilder,
+	execute: (interaction: CommandInteraction) => Promise<void>,
+	handler?: InteractionEventHandler
+}
