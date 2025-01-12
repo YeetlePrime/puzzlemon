@@ -1,4 +1,4 @@
-import { BaseInteraction, Client, CommandInteraction, Events, SlashCommandBuilder } from 'discord.js';
+import { BaseInteraction, ClientEvents, CommandInteraction, SlashCommandBuilder } from 'discord.js';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -14,18 +14,15 @@ export enum DeployType {
 	INACTIVE = "INACTIVE"
 };
 
-export type ClientEventHandler = {
-	event: Events,
-	once?: boolean,
-	execute: (client: Client) => Promise<void>
+export type ClientEventHandler<K extends keyof ClientEvents> = {
+	event: K,
+	once: boolean,
+	execute: (...args: ClientEvents[K]) => Promise<void>
 }
 
 export type InteractionEventHandler = {
-	event: Events,
 	execute: (interaction: BaseInteraction) => Promise<void>
 }
-
-export type EventHandler = ClientEventHandler | InteractionEventHandler;
 
 export type Command = {
 	deployType: DeployType,

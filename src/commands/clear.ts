@@ -4,8 +4,7 @@ import { Command, DeployType } from '../utils.js';
 import { finishPuzzles } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
-export const deployType = DeployType.GLOBAL;
-export const command: Command = {
+const command: Command = {
 	deployType: DeployType.GLOBAL,
 	data: new SlashCommandBuilder()
 		.setName('clear')
@@ -57,4 +56,6 @@ export const command: Command = {
 			await interaction.editReply({ content: 'Du hast zu lange zum Bestätigen gebraucht.', components: [] });
 		}
 	}
-}
+};
+
+export default command;

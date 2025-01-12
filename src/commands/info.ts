@@ -4,8 +4,7 @@ import { Command, DeployType } from '../utils.js';
 import { getActivePuzzlesForUser } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
-export const deployType = DeployType.GLOBAL;
-export const command: Command = {
+const command: Command = {
 	deployType: DeployType.GLOBAL,
 	data: new SlashCommandBuilder()
 		.setName('info')
@@ -67,3 +66,5 @@ export const command: Command = {
 
 	}
 };
+
+export default command;

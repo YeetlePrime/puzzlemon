@@ -1,12 +1,14 @@
 import { Events, MessageFlags } from 'discord.js';
-import logger from '../logger.js';
 
-export const listener = {
-	event: Events.InteractionCreate,
+import { commands } from '../commands/index.js';
+import logger from '../logger.js';
+import { InteractionEventHandler } from 'utils.js';
+
+const handler: InteractionEventHandler = {
 	async execute(interaction) {
 		if (!interaction.isChatInputCommand()) return;
 
-		const command = interaction.client.commands.get(interaction.commandName);
+		const command = commands.find(command => command.data.name === interaction.commandName);
 
 		if (!command) {
 			logger.error(`No command matching ${interaction.commandName} was found.`);
@@ -16,7 +18,8 @@ export const listener = {
 		try {
 			await command.execute(interaction);
 		} catch (err) {
-			logger.error('Unexpected error:', err.stack);
+			logger.logError('Unexpected error', err);
+
 			if (interaction.replied || interaction.deferred) {
 				await interaction.followUp({ content: 'Ein unerwarteter Fehler ist aufgetreten!', flags: MessageFlags.Ephemeral });
 			} else {
@@ -26,3 +29,4 @@ export const listener = {
 	},
 };
 
+export default handler;

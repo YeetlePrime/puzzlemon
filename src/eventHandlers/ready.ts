@@ -2,7 +2,7 @@ import { Client, Events } from 'discord.js';
 import logger from '../logger.js';
 import { type ClientEventHandler } from 'utils.js';
 
-export const listener: ClientEventHandler = {
+const handler: ClientEventHandler<Events.ClientReady> = {
 	event: Events.ClientReady,
 	once: true,
 	async execute(client: Client) {
@@ -10,4 +10,7 @@ export const listener: ClientEventHandler = {
 		logger.info(`Ready! Logged in as ${botTag}`);
 	},
 };
+
+export default handler;
+
 

@@ -2,9 +2,7 @@ import { SlashCommandBuilder } from 'discord.js';
 
 import { Command, DeployType } from '../utils.js';
 
-export const deployType = DeployType.DEV;
-
-export const command: Command = {
+const command: Command = {
 	deployType: DeployType.DEV,
 	data: new SlashCommandBuilder()
 		.setName('ping')
@@ -12,6 +10,6 @@ export const command: Command = {
 	async execute(interaction) {
 		await interaction.reply('Pong!');
 	}
-}
+};
 
-
+export default command;
