@@ -65,11 +65,7 @@ export const handler: InteractionEventHandler = {
 				logger.info(`User ${userId} gave a right answer in guild ${guildId}.`)
 			}
 		} catch (err) {
-			if (err instanceof Error) {
-				logger.error(`Could not submit answer ${answer} for ${userId} in ${guildId}`, err.stack)
-			} else {
-				logger.error(new Error(`Could not submit answer ${answer} for ${userId} in ${guildId}`).stack);
-			}
+			logger.logError(`Could not submit answer ${answer} for ${userId} in ${guildId}`, err);
 
 			await interaction.editReply({
 				content: 'Die Antwort konnte nicht überprüft werden.',

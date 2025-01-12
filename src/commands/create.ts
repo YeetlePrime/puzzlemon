@@ -1,11 +1,12 @@
-import { Events, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags, PermissionFlagsBits } from 'discord.js';
+import { Events, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags, PermissionFlagsBits, MessageActionRowComponentBuilder } from 'discord.js';
 
-import { DeployType } from '../utils.js';
+import { Command, DeployType, InteractionEventHandler } from '../utils.js';
 import { createNewPuzzleForGuild } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
 export const deployType = DeployType.GLOBAL;
-export const command = {
+export const command: Command = {
+	deployType: DeployType.GLOBAL,
 	data: new SlashCommandBuilder()
 		.setName('create')
 		.setDescription('Erstelle ein neues Rätsel.')
@@ -26,8 +27,8 @@ export const command = {
 			.setLabel("Antwort")
 			.setStyle(TextInputStyle.Short);
 
-		const firstActionRow = new ActionRowBuilder().addComponents(raetselInput);
-		const secondActionRow = new ActionRowBuilder().addComponents(antwortInput);
+		const firstActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(raetselInput);
+		const secondActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(antwortInput);
 
 		modal.addComponents(firstActionRow, secondActionRow);
 
@@ -35,7 +36,7 @@ export const command = {
 	}
 };
 
-export const handler = {
+export const handler: InteractionEventHandler = {
 	event: Events.InteractionCreate,
 	async execute(interaction) {
 		if (!interaction.isModalSubmit()) return;
@@ -51,7 +52,7 @@ export const handler = {
 			logger.info(`Successfully created new puzzle for ${guildId}.`)
 			await interaction.editReply({ content: 'Das Rätsel wurde erfolgreich angelegt!' });
 		} catch (err) {
-			logger.error(`Could not create new puzzle for ${guildId}:`, err.stack)
+			logger.logError(`Could not create new puzzle for ${guildId}:`, err)
 			await interaction.editReply({ content: 'Das Rätsel konnte nicht angelegt werden!' });
 		}
 	}

@@ -44,21 +44,17 @@ export const command: Command = {
 					await confirmation.update({ content: `Alle Rätsel wurden erfolgreich gelöscht.`, components: [] });
 					logger.info(`Successfully cleared puzzles for ${guildId}:`);
 				} catch (err) {
-					if (err instanceof Error) {
-						logger.error(`Could not clear puzzles for ${guildId}:`, err.stack);
-					} else {
-						logger.error(new Error(`Could not clear puzzles for ${guildId}:`).stack);
-					}
+					logger.logError(`Could not clear puzzles for ${guildId}`, err);
+
 					await confirmation.update({ content: `Rätsel konnten nicht gelöscht werden.`, components: [] });
 				}
 			} else if (confirmation.customId === 'cancelClear') {
 				await interaction.deleteReply();
 			}
 		} catch (err) {
-			if (err instanceof Error) {
-				logger.warn(`User ${userId} in guild ${guildId} took too long to press the clear button.`, err.stack);
-				await interaction.editReply({ content: 'Du hast zu lange zum Bestätigen gebraucht.', components: [] });
-			}
+			logger.info(`User ${userId} in guild ${guildId} took too long to press the clear button.`);
+
+			await interaction.editReply({ content: 'Du hast zu lange zum Bestätigen gebraucht.', components: [] });
 		}
 	}
 }

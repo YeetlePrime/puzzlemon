@@ -37,6 +37,13 @@ const colors = {
 };
 
 export default {
+	logError(message: string, err: unknown) {
+		if (err instanceof Error) {
+			this.error(`${message}:${err.message}\n${err.stack}`);
+		} else {
+			this.error(`${message}:${String(err)}`);
+		}
+	},
 	info(...args: any[]) {
 		this._log(colors.fg.blue, process.stdout, '[INFO]', ...args);
 	},
