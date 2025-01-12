@@ -1,4 +1,4 @@
-import { Client, Events } from 'discord.js';
+import { BaseInteraction, Client, Events } from 'discord.js';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -14,8 +14,15 @@ export enum DeployType {
 	INACTIVE = "INACTIVE"
 };
 
-export type Listener = {
+export type ClientEventHandler = {
 	event: Events,
 	once?: boolean,
-	callback: (client: Client) => Promise<void>
+	execute: (client: Client) => Promise<void>
 }
+
+export type InteractionEventHandler = {
+	event: Events,
+	execute: (interaction: BaseInteraction) => Promise<void>
+}
+
+export type EventHandler = ClientEventHandler | InteractionEventHandler;

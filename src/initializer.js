@@ -40,17 +40,17 @@ export async function registerListeners(client) {
 	for (const file of getAllJSFilesFromDirectory(path.join(__dirname, 'listeners'))) {
 		const { listener } = await import(file);
 		if (listener.once) {
-			client.once(listener.event, (...args) => listener.callback(...args));
+			client.once(listener.event, (...args) => listener.execute(...args));
 		} else {
-			client.on(listener.event, (...args) => listener.callback(...args));
+			client.on(listener.event, (...args) => listener.execute(...args));
 		}
 	}
 
 	for (const handler of await loadCommandHandlers()) {
 		if (handler.once) {
-			client.once(handler.event, (...args) => handler.callback(...args));
+			client.once(handler.event, (...args) => handler.execute(...args));
 		} else {
-			client.on(handler.event, (...args) => handler.callback(...args));
+			client.on(handler.event, (...args) => handler.execute(...args));
 		}
 	}
 
@@ -62,7 +62,7 @@ async function loadCommandHandlers() {
 
 	for (const file of getAllJSFilesFromDirectory(path.join(__dirname, 'commands'))) {
 		const { handler } = await import(file);
-		if (handler && handler.event !== null && handler.callback !== null) {
+		if (handler && handler.event !== null && handler.execute !== null) {
 			handlers.push(handler);
 		}
 	}

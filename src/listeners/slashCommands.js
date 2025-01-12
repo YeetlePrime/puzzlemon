@@ -3,7 +3,7 @@ import logger from '../logger.js';
 
 export const listener = {
 	event: Events.InteractionCreate,
-	async callback(interaction) {
+	async execute(interaction) {
 		if (!interaction.isChatInputCommand()) return;
 
 		const command = interaction.client.commands.get(interaction.commandName);

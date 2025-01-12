@@ -30,7 +30,7 @@ export const command = {
 
 export const handler = {
 	event: Events.InteractionCreate,
-	async callback(interaction) {
+	async execute(interaction) {
 		if (!interaction.isModalSubmit()) return;
 		if (interaction.customId !== 'answer') return;
 
