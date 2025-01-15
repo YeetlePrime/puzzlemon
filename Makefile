@@ -3,6 +3,9 @@ up:
 restart:
 	docker-compose down
 	docker-compose up --build
+restart-d:
+	docker-compose down
+	docker-compose up --build --detach
 up-db:
 	docker-compose up db
 restart-db:
