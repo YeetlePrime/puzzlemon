@@ -1,12 +1,14 @@
-import { Pool, QueryResultRow, QueryConfigValues, QueryResult } from 'pg';
+import pg from 'pg';
 import { dbConfig } from '../config.js';
 import logger from '../logger.js';
+
+const { Pool } = pg;
 
 const pool = new Pool(dbConfig);
 
 export async function query<I = any[]>(
 	text: string,
-	params: QueryConfigValues<I>
+	params: pg.QueryConfigValues<I>
 ) {
 	return pool.query(text, params)
 }

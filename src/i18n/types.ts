@@ -1,7 +1,6 @@
 import en from './locales/en.js'
 import de from './locales/de.js'
 
-
 export const DEFAULT_LOCALE = 'en';
 export const LOCALES = {
 	en: en,

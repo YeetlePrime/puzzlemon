@@ -1,5 +1,5 @@
 import rosetta from 'rosetta';
-import { DEFAULT_LOCALE, LOCALES, PartialTranslation, TranslationKeys as TranslationKey, TranslationObject } from './types';
+import { DEFAULT_LOCALE, LOCALES, PartialTranslation, TranslationKeys as TranslationKey, TranslationObject } from './types.js';
 import { Locale } from 'discord.js';
 
 const i18n = rosetta<PartialTranslation>();

@@ -12,7 +12,7 @@
   },
   "license": "MIT",
   "author": "YeetlePrime",
-  "type": "commonjs",
+  "type": "module",
   "main": "build/bot.js",
   "scripts": {
     "build": "tsc -p ."
