@@ -1,6 +1,6 @@
-import { Events, ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags, PermissionFlagsBits, MessageActionRowComponentBuilder } from 'discord.js';
+import { ModalBuilder, TextInputBuilder, TextInputStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags, PermissionFlagsBits } from 'discord.js';
 
-import { Command, DeployType, InteractionEventHandler } from '../utils.js';
+import { Command, DeployType } from '../utils.js';
 import { createNewPuzzleForGuild } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
@@ -38,7 +38,7 @@ const command: Command = {
 			if (!interaction.isModalSubmit()) return;
 			if (interaction.customId !== 'createModal') return;
 
-			const guildId = interaction.guildId;
+			const guildId = interaction.guildId ?? "";
 			const question = interaction.fields.getTextInputValue('raetselInput');
 			const answer = interaction.fields.getTextInputValue('antwortInput');
 

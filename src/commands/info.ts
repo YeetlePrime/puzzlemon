@@ -10,7 +10,7 @@ const command: Command = {
 		.setName('info')
 		.setDescription('Zeigt deinen Status für die aktiven Rätsel.'),
 	async execute(interaction) {
-		const guildId = interaction.guildId;
+		const guildId = interaction.guildId ?? "";
 		const userId = interaction.user.id;
 
 		try {

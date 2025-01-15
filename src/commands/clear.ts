@@ -1,4 +1,4 @@
-import { ButtonStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags, ButtonBuilder, PermissionFlagsBits, Snowflake, BaseInteraction, MessageActionRowComponentBuilder } from 'discord.js';
+import { ButtonStyle, ActionRowBuilder, SlashCommandBuilder, MessageFlags, ButtonBuilder, PermissionFlagsBits, BaseInteraction, MessageActionRowComponentBuilder } from 'discord.js';
 
 import { Command, DeployType } from '../utils.js';
 import { finishPuzzles } from '../db/puzzleRepository.js';
@@ -39,7 +39,7 @@ const command: Command = {
 
 			if (confirmation.customId === 'confirmClear') {
 				try {
-					await finishPuzzles(confirmation.guildId);
+					await finishPuzzles(confirmation.guildId ?? "");
 					await confirmation.update({ content: `Alle Rätsel wurden erfolgreich gelöscht.`, components: [] });
 					logger.info(`Successfully cleared puzzles for ${guildId}:`);
 				} catch (err) {

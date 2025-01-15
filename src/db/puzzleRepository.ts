@@ -1,6 +1,8 @@
+import { Snowflake } from 'discord.js';
 import { query as executeQuery, getClient } from './index.js'
+import { Client, PoolClient } from 'pg';
 
-export async function createNewPuzzleForGuild(guild_id, question, answer) {
+export async function createNewPuzzleForGuild(guild_id: Snowflake, question: string, answer: string) {
 	const query = [""
 		, "SELECT id FROM get_or_create_puzzle_chain($1);"
 	].join(' ');
@@ -15,16 +17,16 @@ export async function createNewPuzzleForGuild(guild_id, question, answer) {
 
 		await client.query('COMMIT');
 		return result;
-	} catch (error) {
+	} catch (err) {
 		await client.query('ROLLBACK');
 
-		throw new Error(err.message, { cause: err });
+		throw err;
 	} finally {
 		client.release();
 	}
 }
 
-async function createNewPuzzle(client, puzzle_chain_id, question, answer) {
+async function createNewPuzzle(client: Client | PoolClient, puzzle_chain_id: number, question: string, answer: string) {
 	const query = [""
 		, "INSERT INTO puzzles(puzzle_chain_id, question, answer)"
 		, "VALUES ($1, $2, $3)"
@@ -34,7 +36,7 @@ async function createNewPuzzle(client, puzzle_chain_id, question, answer) {
 	return (await client.query(query, [puzzle_chain_id, question, answer])).rows[0];
 }
 
-export async function finishPuzzles(guildId) {
+export async function finishPuzzles(guildId: Snowflake) {
 	const query = [""
 		, "UPDATE puzzle_chains"
 		, "SET closed_ts = now()"
@@ -45,7 +47,7 @@ export async function finishPuzzles(guildId) {
 	await executeQuery(query, [guildId]);
 }
 
-export async function getActivePuzzlesForUser(guildId, userId) {
+export async function getActivePuzzlesForUser(guildId: Snowflake, userId: Snowflake) {
 	const query = `
 		SELECT p.question, p.answer, p.index, a.completed_ts FROM puzzle_chains pc
 		JOIN puzzles p ON pc.id = p.puzzle_chain_id
@@ -59,7 +61,7 @@ export async function getActivePuzzlesForUser(guildId, userId) {
 	return (await executeQuery(query, [guildId, userId])).rows;
 }
 
-export async function answerPuzzle(guildId, userId, answer) {
+export async function answerPuzzle(guildId: Snowflake, userId: Snowflake, answer: string) {
 	const query = [""
 		, "SELECT p.id, p.question, p.answer, p.index, p.generated_ts FROM puzzle_chains pc"
 		, "JOIN puzzles p"
@@ -91,7 +93,7 @@ export async function answerPuzzle(guildId, userId, answer) {
 	} catch (err) {
 		await client.query('ROLLBACK');
 
-		throw new Error(err.message, { cause: err });
+		throw err;
 	} finally {
 		client.release();
 	}

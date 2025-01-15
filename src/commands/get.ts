@@ -11,7 +11,7 @@ export const command: Command = {
 		.setDescription('Zeige aktive Rätsel.')
 		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 	async execute(interaction) {
-		const guildId = interaction.guildId;
+		const guildId = interaction.guildId ?? "";
 		const userId = interaction.user.id;
 
 		try {

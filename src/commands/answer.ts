@@ -1,6 +1,6 @@
-import { ActionRowBuilder, SlashCommandBuilder, MessageFlags, Events, ModalBuilder, TextInputStyle, EmbedBuilder, TextInputBuilder } from 'discord.js';
+import { ActionRowBuilder, SlashCommandBuilder, MessageFlags, ModalBuilder, TextInputStyle, EmbedBuilder, TextInputBuilder } from 'discord.js';
 
-import { Command, DeployType, InteractionEventHandler } from '../utils.js';
+import { Command, DeployType } from '../utils.js';
 import { answerPuzzle } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 
@@ -30,7 +30,7 @@ const command: Command = {
 			if (!interaction.isModalSubmit()) return;
 			if (interaction.customId !== 'answer') return;
 
-			const guildId = interaction.guildId;
+			const guildId = interaction.guildId ?? "";
 			const userId = interaction.user.id;
 			const answer = interaction.fields.getTextInputValue('antwortInput');
 
