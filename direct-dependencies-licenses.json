@@ -35,6 +35,14 @@
     "path": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/ws",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/ws/LICENSE"
   },
+  "@isaacs/cliui@8.0.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/yargs/cliui",
+    "publisher": "Ben Coe",
+    "email": "ben@npmjs.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@isaacs/cliui",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@isaacs/cliui/LICENSE.txt"
+  },
   "@sapphire/async-queue@1.5.5": {
     "licenses": "MIT",
     "repository": "https://github.com/sapphiredev/utilities",
@@ -82,6 +90,74 @@
     "path": "/home/yeetle/dev/puzzlemon/node_modules/@vladfrangu/async_event_emitter",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@vladfrangu/async_event_emitter/LICENSE.md"
   },
+  "ansi-regex@6.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/ansi-regex",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/ansi-regex",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/ansi-regex/license"
+  },
+  "ansi-styles@6.2.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/ansi-styles",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/ansi-styles",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/ansi-styles/license"
+  },
+  "balanced-match@1.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/juliangruber/balanced-match",
+    "publisher": "Julian Gruber",
+    "email": "mail@juliangruber.com",
+    "url": "http://juliangruber.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/balanced-match",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/balanced-match/LICENSE.md"
+  },
+  "brace-expansion@2.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/juliangruber/brace-expansion",
+    "publisher": "Julian Gruber",
+    "email": "mail@juliangruber.com",
+    "url": "http://juliangruber.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/brace-expansion",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/brace-expansion/LICENSE"
+  },
+  "cliui@8.0.1": {
+    "licenses": "ISC",
+    "repository": "https://github.com/yargs/cliui",
+    "publisher": "Ben Coe",
+    "email": "ben@npmjs.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/cliui",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/cliui/LICENSE.txt"
+  },
+  "color-convert@2.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/Qix-/color-convert",
+    "publisher": "Heather Arthur",
+    "email": "fayearthur@gmail.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/color-convert",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/color-convert/LICENSE"
+  },
+  "color-name@1.1.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/colorjs/color-name",
+    "publisher": "DY",
+    "email": "dfcreative@gmail.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/color-name",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/color-name/LICENSE"
+  },
+  "cross-spawn@7.0.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/moxystudio/node-cross-spawn",
+    "publisher": "André Cruz",
+    "email": "andre@moxy.studio",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/cross-spawn",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/cross-spawn/LICENSE"
+  },
   "discord-api-types@0.37.115": {
     "licenses": "MIT",
     "repository": "https://github.com/discordjs/discord-api-types",
@@ -105,12 +181,87 @@
     "path": "/home/yeetle/dev/puzzlemon/node_modules/dlv",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/dlv/README.md"
   },
+  "eastasianwidth@0.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/komagata/eastasianwidth",
+    "publisher": "Masaki Komagata",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/eastasianwidth",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/eastasianwidth/README.md"
+  },
+  "emoji-regex@9.2.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mathiasbynens/emoji-regex",
+    "publisher": "Mathias Bynens",
+    "url": "https://mathiasbynens.be/",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/emoji-regex",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/emoji-regex/LICENSE-MIT.txt"
+  },
+  "escalade@3.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lukeed/escalade",
+    "publisher": "Luke Edwards",
+    "email": "luke.edwards05@gmail.com",
+    "url": "https://lukeed.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/escalade",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/escalade/license"
+  },
   "fast-deep-equal@3.1.3": {
     "licenses": "MIT",
     "repository": "https://github.com/epoberezkin/fast-deep-equal",
     "publisher": "Evgeny Poberezkin",
     "path": "/home/yeetle/dev/puzzlemon/node_modules/fast-deep-equal",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/fast-deep-equal/LICENSE"
+  },
+  "foreground-child@3.3.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/tapjs/foreground-child",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/foreground-child",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/foreground-child/LICENSE"
+  },
+  "get-caller-file@2.0.5": {
+    "licenses": "ISC",
+    "repository": "https://github.com/stefanpenner/get-caller-file",
+    "publisher": "Stefan Penner",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/get-caller-file",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/get-caller-file/LICENSE.md"
+  },
+  "glob@11.0.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/node-glob",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "https://blog.izs.me/",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/glob",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/glob/LICENSE"
+  },
+  "is-fullwidth-code-point@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/is-fullwidth-code-point",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/is-fullwidth-code-point",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/is-fullwidth-code-point/license"
+  },
+  "isexe@2.0.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/isexe",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/isexe",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/isexe/LICENSE"
+  },
+  "jackspeak@4.0.2": {
+    "licenses": "BlueOak-1.0.0",
+    "repository": "https://github.com/isaacs/jackspeak",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/jackspeak",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/jackspeak/LICENSE.md"
   },
   "lodash.snakecase@4.1.1": {
     "licenses": "MIT",
@@ -129,12 +280,45 @@
     "path": "/home/yeetle/dev/puzzlemon/node_modules/lodash",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/lodash/LICENSE"
   },
+  "lru-cache@11.0.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/node-lru-cache",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/lru-cache",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/lru-cache/LICENSE"
+  },
   "magic-bytes.js@1.10.0": {
     "licenses": "MIT",
     "repository": "https://github.com/LarsKoelpin/magic-bytes",
     "publisher": "Lars Kölpin",
     "path": "/home/yeetle/dev/puzzlemon/node_modules/magic-bytes.js",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/magic-bytes.js/LICENSE"
+  },
+  "minimatch@10.0.1": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/minimatch",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/minimatch",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/minimatch/LICENSE"
+  },
+  "minipass@7.1.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/minipass",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me/",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/minipass",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/minipass/LICENSE"
+  },
+  "node-pg-migrate@7.9.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/salsita/node-pg-migrate",
+    "publisher": "Theo Ephraim",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/node-pg-migrate",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/node-pg-migrate/LICENSE"
   },
   "obuf@1.1.2": {
     "licenses": "MIT",
@@ -143,6 +327,33 @@
     "email": "fedor@indutny.com",
     "path": "/home/yeetle/dev/puzzlemon/node_modules/obuf",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/obuf/LICENSE"
+  },
+  "package-json-from-dist@1.0.1": {
+    "licenses": "BlueOak-1.0.0",
+    "repository": "https://github.com/isaacs/package-json-from-dist",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "https://izs.me",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/package-json-from-dist",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/package-json-from-dist/LICENSE.md"
+  },
+  "path-key@3.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/path-key",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/path-key",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/path-key/license"
+  },
+  "path-scurry@2.0.0": {
+    "licenses": "BlueOak-1.0.0",
+    "repository": "https://github.com/isaacs/path-scurry",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "https://blog.izs.me",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/path-scurry",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/path-scurry/LICENSE.md"
   },
   "pg-cloudflare@1.1.1": {
     "licenses": "MIT",
@@ -259,6 +470,15 @@
     "licenseFile": "/home/yeetle/dev/puzzlemon/LICENSE",
     "noticeFile": "/home/yeetle/dev/puzzlemon/NOTICE"
   },
+  "require-directory@2.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/troygoode/node-require-directory",
+    "publisher": "Troy Goode",
+    "email": "troygoode@gmail.com",
+    "url": "http://github.com/troygoode/",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/require-directory",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/require-directory/LICENSE"
+  },
   "rosetta@1.1.0": {
     "licenses": "MIT",
     "repository": "https://github.com/lukeed/rosetta",
@@ -268,6 +488,32 @@
     "path": "/home/yeetle/dev/puzzlemon/node_modules/rosetta",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/rosetta/license"
   },
+  "shebang-command@2.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/kevva/shebang-command",
+    "publisher": "Kevin Mårtensson",
+    "email": "kevinmartensson@gmail.com",
+    "url": "github.com/kevva",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/shebang-command",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/shebang-command/license"
+  },
+  "shebang-regex@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/shebang-regex",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/shebang-regex",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/shebang-regex/license"
+  },
+  "signal-exit@4.1.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/tapjs/signal-exit",
+    "publisher": "Ben Coe",
+    "email": "ben@npmjs.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/signal-exit",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/signal-exit/LICENSE.txt"
+  },
   "split2@4.2.0": {
     "licenses": "ISC",
     "repository": "https://github.com/mcollina/split2",
@@ -275,6 +521,42 @@
     "email": "hello@matteocollina.com",
     "path": "/home/yeetle/dev/puzzlemon/node_modules/split2",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/split2/LICENSE"
+  },
+  "string-width@4.2.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/string-width",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/string-width-cjs",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/string-width-cjs/license"
+  },
+  "string-width@5.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sindresorhus/string-width",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/string-width",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/string-width/license"
+  },
+  "strip-ansi@6.0.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/strip-ansi",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/strip-ansi-cjs",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/strip-ansi-cjs/license"
+  },
+  "strip-ansi@7.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/strip-ansi",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/strip-ansi",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/strip-ansi/license"
   },
   "templite@1.2.0": {
     "licenses": "MIT",
@@ -315,6 +597,33 @@
     "path": "/home/yeetle/dev/puzzlemon/node_modules/undici",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/undici/LICENSE"
   },
+  "which@2.0.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/isaacs/node-which",
+    "publisher": "Isaac Z. Schlueter",
+    "email": "i@izs.me",
+    "url": "http://blog.izs.me",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/which",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/which/LICENSE"
+  },
+  "wrap-ansi@7.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/wrap-ansi",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/wrap-ansi-cjs",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/wrap-ansi-cjs/license"
+  },
+  "wrap-ansi@8.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/chalk/wrap-ansi",
+    "publisher": "Sindre Sorhus",
+    "email": "sindresorhus@gmail.com",
+    "url": "https://sindresorhus.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/wrap-ansi",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/wrap-ansi/license"
+  },
   "ws@8.18.0": {
     "licenses": "MIT",
     "repository": "https://github.com/websockets/ws",
@@ -331,6 +640,28 @@
     "email": "raynos2@gmail.com",
     "path": "/home/yeetle/dev/puzzlemon/node_modules/xtend",
     "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/xtend/LICENSE"
+  },
+  "y18n@5.0.8": {
+    "licenses": "ISC",
+    "repository": "https://github.com/yargs/y18n",
+    "publisher": "Ben Coe",
+    "email": "bencoe@gmail.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/y18n",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/y18n/LICENSE"
+  },
+  "yargs-parser@21.1.1": {
+    "licenses": "ISC",
+    "repository": "https://github.com/yargs/yargs-parser",
+    "publisher": "Ben Coe",
+    "email": "ben@npmjs.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/yargs-parser",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/yargs-parser/LICENSE.txt"
+  },
+  "yargs@17.7.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/yargs/yargs",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/yargs",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/yargs/LICENSE"
   }
 }
 
