@@ -10,7 +10,7 @@ const de: PartialTranslation = {
 			description: "Beantworte ein Rätsel.",
 			modalTitle: "Beantworte Rätsel",
 			wrong: "Die Antwort ist leider falsch.",
-			right: "Das ist die Richtige Antfort für folgende Rätsel:",
+			right: "Das ist die richtige Antwort für folgende Rätsel:",
 			error: "Es konnte nicht überprüft werden, ob die Antwort richtig ist.",
 		},
 		clear: {

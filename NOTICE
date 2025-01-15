@@ -1,0 +1,9 @@
+Key dependencies and their licenses:
+
+- discord.js (Apache-2.0): https://github.com/discordjs/discord.js
+- pg (MIT): https://github.com/brianc/node-postgres
+- rosetta (MIT): https://github.com/lukeed/rosetta
+- TypeScript (Apache-2.0): https://github.com/microsoft/TypeScript
+
+For full license details of all direct dependencies, see direct-dependencies-licenses.json in the root of this repository.
+

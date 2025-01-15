@@ -1,0 +1,336 @@
+{
+  "@discordjs/builders@1.10.0": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/discordjs/discord.js",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/builders",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/builders/LICENSE"
+  },
+  "@discordjs/collection@1.5.3": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/discordjs/discord.js",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/collection",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/collection/LICENSE"
+  },
+  "@discordjs/formatters@0.6.0": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/discordjs/discord.js",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/formatters",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/formatters/LICENSE"
+  },
+  "@discordjs/rest@2.4.2": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/discordjs/discord.js",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/rest",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/rest/LICENSE"
+  },
+  "@discordjs/util@1.1.1": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/discordjs/discord.js",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/util",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/util/LICENSE"
+  },
+  "@discordjs/ws@1.2.0": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/discordjs/discord.js",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/ws",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@discordjs/ws/LICENSE"
+  },
+  "@sapphire/async-queue@1.5.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sapphiredev/utilities",
+    "publisher": "@sapphire",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@sapphire/async-queue",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@sapphire/async-queue/README.md"
+  },
+  "@sapphire/shapeshift@4.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sapphiredev/shapeshift",
+    "publisher": "@sapphire",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@sapphire/shapeshift",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@sapphire/shapeshift/LICENSE.md"
+  },
+  "@sapphire/snowflake@3.5.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/sapphiredev/utilities",
+    "publisher": "@sapphire",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@sapphire/snowflake",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@sapphire/snowflake/README.md"
+  },
+  "@types/node@22.10.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@types/node",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@types/node/LICENSE"
+  },
+  "@types/pg@8.11.10": {
+    "licenses": "MIT",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@types/pg",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@types/pg/LICENSE"
+  },
+  "@types/ws@8.5.13": {
+    "licenses": "MIT",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@types/ws",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@types/ws/LICENSE"
+  },
+  "@vladfrangu/async_event_emitter@2.4.6": {
+    "licenses": "MIT",
+    "repository": "https://github.com/vladfrangu/async_event_emitter",
+    "publisher": "Vlad Frangu",
+    "email": "me@vladfrangu.dev",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/@vladfrangu/async_event_emitter",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/@vladfrangu/async_event_emitter/LICENSE.md"
+  },
+  "discord-api-types@0.37.115": {
+    "licenses": "MIT",
+    "repository": "https://github.com/discordjs/discord-api-types",
+    "publisher": "Vlad Frangu",
+    "email": "me@vladfrangu.dev",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/discord-api-types",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/discord-api-types/LICENSE"
+  },
+  "discord.js@14.17.3": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/discordjs/discord.js",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/discord.js",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/discord.js/LICENSE"
+  },
+  "dlv@1.1.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/developit/dlv",
+    "publisher": "Jason Miller",
+    "email": "jason@developit.ca",
+    "url": "http://jasonformat.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/dlv",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/dlv/README.md"
+  },
+  "fast-deep-equal@3.1.3": {
+    "licenses": "MIT",
+    "repository": "https://github.com/epoberezkin/fast-deep-equal",
+    "publisher": "Evgeny Poberezkin",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/fast-deep-equal",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/fast-deep-equal/LICENSE"
+  },
+  "lodash.snakecase@4.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "url": "http://allyoucanleet.com/",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/lodash.snakecase",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/lodash.snakecase/LICENSE"
+  },
+  "lodash@4.17.21": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lodash/lodash",
+    "publisher": "John-David Dalton",
+    "email": "john.david.dalton@gmail.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/lodash",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/lodash/LICENSE"
+  },
+  "magic-bytes.js@1.10.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/LarsKoelpin/magic-bytes",
+    "publisher": "Lars Kölpin",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/magic-bytes.js",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/magic-bytes.js/LICENSE"
+  },
+  "obuf@1.1.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/indutny/offset-buffer",
+    "publisher": "Fedor Indutny",
+    "email": "fedor@indutny.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/obuf",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/obuf/LICENSE"
+  },
+  "pg-cloudflare@1.1.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/brianc/node-postgres",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/pg-cloudflare",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/pg-cloudflare/LICENSE"
+  },
+  "pg-connection-string@2.7.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/brianc/node-postgres",
+    "publisher": "Blaine Bublitz",
+    "email": "blaine@iceddev.com",
+    "url": "http://iceddev.com/",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/pg-connection-string",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/pg-connection-string/LICENSE"
+  },
+  "pg-int8@1.0.1": {
+    "licenses": "ISC",
+    "repository": "https://github.com/charmander/pg-int8",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/pg-int8",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/pg-int8/LICENSE"
+  },
+  "pg-numeric@1.0.2": {
+    "licenses": "ISC",
+    "repository": "https://github.com/charmander/pg-numeric",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/pg-numeric",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/pg-numeric/LICENSE"
+  },
+  "pg-pool@3.7.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/brianc/node-postgres",
+    "publisher": "Brian M. Carlson",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/pg-pool",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/pg-pool/LICENSE"
+  },
+  "pg-protocol@1.7.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/brianc/node-postgres",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/pg-protocol",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/pg-protocol/LICENSE"
+  },
+  "pg-types@4.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/brianc/node-pg-types",
+    "publisher": "Brian M. Carlson",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/pg-types",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/pg-types/README.md"
+  },
+  "pg@8.13.1": {
+    "licenses": "MIT",
+    "repository": "https://github.com/brianc/node-postgres",
+    "publisher": "Brian Carlson",
+    "email": "brian.m.carlson@gmail.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/pg",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/pg/LICENSE"
+  },
+  "pgpass@1.0.5": {
+    "licenses": "MIT",
+    "repository": "https://github.com/hoegaarden/pgpass",
+    "publisher": "Hannes Hörl",
+    "email": "hannes.hoerl+pgpass@snowreporter.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/pgpass",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/pgpass/README.md"
+  },
+  "postgres-array@3.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/bendrucker/postgres-array",
+    "publisher": "Ben Drucker",
+    "email": "bvdrucker@gmail.com",
+    "url": "bendrucker.me",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/postgres-array",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/postgres-array/license"
+  },
+  "postgres-bytea@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/bendrucker/postgres-bytea",
+    "publisher": "Ben Drucker",
+    "email": "bvdrucker@gmail.com",
+    "url": "bendrucker.me",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/postgres-bytea",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/postgres-bytea/license"
+  },
+  "postgres-date@2.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/bendrucker/postgres-date",
+    "publisher": "Ben Drucker",
+    "email": "bvdrucker@gmail.com",
+    "url": "bendrucker.me",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/postgres-date",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/postgres-date/license"
+  },
+  "postgres-interval@3.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/bendrucker/postgres-interval",
+    "publisher": "Ben Drucker",
+    "email": "bvdrucker@gmail.com",
+    "url": "https://www.bendrucker.me",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/postgres-interval",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/postgres-interval/license"
+  },
+  "postgres-range@1.1.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/martianboy/postgres-range",
+    "publisher": "Abbas Mashayekh",
+    "email": "martianboy2005@gmail.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/postgres-range",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/postgres-range/LICENSE"
+  },
+  "puzzlemon@1.0.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/YeetlePrime/puzzlemon",
+    "publisher": "YeetlePrime",
+    "path": "/home/yeetle/dev/puzzlemon",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/LICENSE",
+    "noticeFile": "/home/yeetle/dev/puzzlemon/NOTICE"
+  },
+  "rosetta@1.1.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lukeed/rosetta",
+    "publisher": "Luke Edwards",
+    "email": "luke.edwards05@gmail.com",
+    "url": "https://lukeed.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/rosetta",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/rosetta/license"
+  },
+  "split2@4.2.0": {
+    "licenses": "ISC",
+    "repository": "https://github.com/mcollina/split2",
+    "publisher": "Matteo Collina",
+    "email": "hello@matteocollina.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/split2",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/split2/LICENSE"
+  },
+  "templite@1.2.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lukeed/templite",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/templite",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/templite/license"
+  },
+  "ts-mixer@6.0.4": {
+    "licenses": "MIT",
+    "repository": "https://github.com/tannerntannern/ts-mixer",
+    "publisher": "Tanner Nielsen",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/ts-mixer",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/ts-mixer/LICENSE"
+  },
+  "tslib@2.8.1": {
+    "licenses": "0BSD",
+    "repository": "https://github.com/Microsoft/tslib",
+    "publisher": "Microsoft Corp.",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/tslib",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/tslib/LICENSE.txt"
+  },
+  "typescript@5.7.3": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/microsoft/TypeScript",
+    "publisher": "Microsoft Corp.",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/typescript",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/typescript/LICENSE.txt"
+  },
+  "undici-types@6.20.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodejs/undici",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/undici-types",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/undici-types/LICENSE"
+  },
+  "undici@6.19.8": {
+    "licenses": "MIT",
+    "repository": "https://github.com/nodejs/undici",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/undici",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/undici/LICENSE"
+  },
+  "ws@8.18.0": {
+    "licenses": "MIT",
+    "repository": "https://github.com/websockets/ws",
+    "publisher": "Einar Otto Stangvik",
+    "email": "einaros@gmail.com",
+    "url": "http://2x.io",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/ws",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/ws/LICENSE"
+  },
+  "xtend@4.0.2": {
+    "licenses": "MIT",
+    "repository": "https://github.com/Raynos/xtend",
+    "publisher": "Raynos",
+    "email": "raynos2@gmail.com",
+    "path": "/home/yeetle/dev/puzzlemon/node_modules/xtend",
+    "licenseFile": "/home/yeetle/dev/puzzlemon/node_modules/xtend/LICENSE"
+  }
+}
+
