@@ -3,20 +3,25 @@ import { ActionRowBuilder, SlashCommandBuilder, MessageFlags, ModalBuilder, Text
 import { Command, DeployType } from '../utils.js';
 import { answerPuzzle } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
+import { getAllTranslations, L, LD, setLocale, unsetLocale } from '../i18n/index.js';
 
 const command: Command = {
 	deployType: DeployType.GLOBAL,
 	data: new SlashCommandBuilder()
 		.setName('answer')
-		.setDescription('Gibt eine Antwort auf die Rätsel.'),
+		.setDescription(LD('commands.answer.description'))
+		.setDescriptionLocalizations(getAllTranslations('commands.answer.description')),
 	async execute(interaction) {
+		const locale = interaction.locale;
+		setLocale(locale);
+
 		const modal = new ModalBuilder()
 			.setCustomId('answer')
-			.setTitle('Beantworte Rätsel');
+			.setTitle(L('commands.answer.modalTitle'));
 
 		const antwortInput = new TextInputBuilder()
-			.setCustomId('antwortInput')
-			.setLabel("Antwort")
+			.setCustomId('answerInput')
+			.setLabel(L('answer'))
 			.setStyle(TextInputStyle.Short);
 
 		const firstActionRow = new ActionRowBuilder<TextInputBuilder>().addComponents(antwortInput);
@@ -24,6 +29,7 @@ const command: Command = {
 		modal.addComponents(firstActionRow)
 
 		await interaction.showModal(modal);
+		unsetLocale();
 	},
 	handler: {
 		async execute(interaction) {
@@ -32,7 +38,9 @@ const command: Command = {
 
 			const guildId = interaction.guildId ?? "";
 			const userId = interaction.user.id;
-			const answer = interaction.fields.getTextInputValue('antwortInput');
+			const answer = interaction.fields.getTextInputValue('answerInput');
+			const locale = interaction.locale;
+			setLocale(locale);
 
 			try {
 				await interaction.deferReply({
@@ -43,19 +51,19 @@ const command: Command = {
 
 				if (puzzles.length === 0) {
 					await interaction.editReply({
-						content: 'Die Antwort ist leider falsch'
+						content: L('commands.answer.wrong')
 					});
 					logger.info(`User ${userId} gave a wrong answer in guild ${guildId}.`)
 				} else {
 					const embeds = puzzles
 						.map((puzzle: any) => {
 							return new EmbedBuilder()
-								.setTitle(`Rätsel ${puzzle.index}`)
+								.setTitle(`${L('riddle')} ${puzzle.index}`)
 								.setDescription(puzzle.question);
 						})
 
 					await interaction.editReply({
-						content: 'Das ist die richtige Antwort auf',
+						content: L('commands.answer.right'),
 						embeds: embeds
 					});
 					logger.info(`User ${userId} gave a right answer in guild ${guildId}.`)
@@ -64,9 +72,11 @@ const command: Command = {
 				logger.logError(`Could not submit answer ${answer} for ${userId} in ${guildId}`, err);
 
 				await interaction.editReply({
-					content: 'Die Antwort konnte nicht überprüft werden.',
+					content: L('commands.answer.error'),
 					embeds: []
 				});
+			} finally {
+				unsetLocale();
 			}
 		}
 	}

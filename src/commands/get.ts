@@ -3,16 +3,21 @@ import { SlashCommandBuilder, MessageFlags, EmbedBuilder, PermissionFlagsBits } 
 import { Command, DeployType } from '../utils.js';
 import { getActivePuzzlesForUser } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
+import { getAllTranslations, L, LD, setLocale, unsetLocale } from '../i18n/index.js';
 
 export const command: Command = {
 	deployType: DeployType.GLOBAL,
 	data: new SlashCommandBuilder()
 		.setName('get')
-		.setDescription('Zeige aktive Rätsel.')
+		.setDescription(LD('commands.get.description'))
+		.setDescriptionLocalizations(getAllTranslations('commands.get.description'))
 		.setDefaultMemberPermissions(PermissionFlagsBits.Administrator),
 	async execute(interaction) {
 		const guildId = interaction.guildId ?? "";
 		const userId = interaction.user.id;
+		const locale = interaction.locale;
+
+		setLocale(locale);
 
 		try {
 			await interaction.deferReply({
@@ -23,16 +28,16 @@ export const command: Command = {
 
 			if (puzzles.length === 0) {
 				await interaction.editReply({
-					content: 'Es gibt keine Rätsel.'
+					content: L('commands.get.empty')
 				});
 			} else {
 				const embeds = puzzles
 					.map((puzzle: any) => {
 						return new EmbedBuilder()
-							.setTitle(`Rätsel ${puzzle.index}`)
+							.setTitle(`${L('riddle')} ${puzzle.index}`)
 							.setDescription(puzzle.question)
 							.setFields([{
-								name: 'Antwort',
+								name: L('answer'),
 								value: puzzle.answer,
 								inline: false
 							}]);
@@ -47,8 +52,10 @@ export const command: Command = {
 		} catch (err) {
 			logger.logError(`User ${userId} could not retrieve puzzles for ${guildId}`, err);
 			await interaction.editReply({
-				content: 'Rätsel konnten nicht geladen werden.'
+				content: L('commands.get.error')
 			});
+		} finally {
+			unsetLocale();
 		}
 	}
 };
