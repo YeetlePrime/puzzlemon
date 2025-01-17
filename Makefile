@@ -1,14 +1,11 @@
-up:
-	docker-compose up --build
-restart:
+dev:
 	docker-compose down
 	docker-compose up --build
-restart-d:
-	docker-compose down
-	docker-compose up --build --detach
-up-db:
-	docker-compose up db
-restart-db:
-	docker-compose down db
-	docker-compose up db
-
+prod:
+	docker-compose -f docker-compose-prod.yaml down
+	docker-compose -f docker-compose-prod.yaml up --build
+prod-detached:
+	docker-compose -f docker-compose-prod.yaml down
+	docker-compose -f docker-compose-prod.yaml up --build
+prod-logs:
+	docker-compose -f docker-compose-prod.yaml logs

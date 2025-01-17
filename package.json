@@ -15,7 +15,9 @@
   "type": "module",
   "main": "build/bot.js",
   "scripts": {
-    "build": "tsc -p ."
+    "build": "tsc -p .",
+    "migrate": "node-pg-migrate --migration-file-extension cjs",
+    "prod": "node ."
   },
   "dependencies": {
     "discord.js": "^14.17.2",
