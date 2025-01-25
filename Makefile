@@ -6,6 +6,6 @@ prod:
 	docker-compose -f docker-compose-prod.yaml up --build
 prod-detached:
 	docker-compose -f docker-compose-prod.yaml down
-	docker-compose -f docker-compose-prod.yaml up --build --detached
+	docker-compose -f docker-compose-prod.yaml up --build --detach
 prod-logs:
 	docker-compose -f docker-compose-prod.yaml logs
