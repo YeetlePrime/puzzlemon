@@ -1,4 +1,4 @@
-import { BaseInteraction, ClientEvents, CommandInteraction, SlashCommandBuilder } from 'discord.js';
+import { BaseInteraction, Channel, ChatInputCommandInteraction, Client, ClientEvents, SlashCommandBuilder, SlashCommandOptionsOnlyBuilder, Snowflake, TextChannel } from 'discord.js';
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -26,7 +26,30 @@ export type InteractionEventHandler = {
 
 export type Command = {
 	deployType: DeployType,
-	data: SlashCommandBuilder,
-	execute: (interaction: CommandInteraction) => Promise<void>,
+	data: SlashCommandBuilder | SlashCommandOptionsOnlyBuilder,
+	execute: (interaction: ChatInputCommandInteraction) => Promise<void>,
 	handler?: InteractionEventHandler
+}
+
+export async function getChannelById(client: Client, channelId: Snowflake) {
+	// Try fetching from cache first
+	let channel: Channel | null | undefined = client.channels.cache.get(channelId);
+
+	if (!channel) {
+		try {
+			// Fetch from API if not cached
+			channel = await client.channels.fetch(channelId);
+		} catch (error) {
+			console.error(`Failed to fetch channel with ID ${channelId}:`, error);
+			return null;
+		}
+	}
+
+	// Validate channel type
+	if (!channel?.isTextBased()) {
+		console.error(`Channel with ID ${channelId} is not a text channel.`);
+		return null;
+	}
+
+	return channel as TextChannel;
 }

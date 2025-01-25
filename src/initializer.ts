@@ -35,7 +35,7 @@ export async function registerCommands() {
 		);
 
 		if (typeof data === 'object' && data !== null && 'length' in data) {
-			logger.info(`Successfully registered ${data.length} lobal commands.`);
+			logger.info(`Successfully registered ${data.length} global commands.`);
 		}
 	} catch (err) {
 		logger.logError(`Could not register ${DeployType.GLOBAL} commands`, err);

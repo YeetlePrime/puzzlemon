@@ -1,6 +1,7 @@
 import { Snowflake } from 'discord.js';
 import { query as executeQuery, getClient } from './index.js'
 import { Client, PoolClient } from 'pg';
+import { guildId } from 'config.js';
 
 export async function createNewPuzzleForGuild(guild_id: Snowflake, question: string, answer: string) {
 	const query = [""
@@ -59,6 +60,29 @@ export async function getActivePuzzlesForUser(guildId: Snowflake, userId: Snowfl
 	`;
 
 	return (await executeQuery(query, [guildId, userId])).rows;
+}
+
+export async function setLogChannelForGuild(guildId: Snowflake, channelId: Snowflake) {
+	const query = `
+		INSERT INTO guild_settings(guild_id, log_channel_id)
+		VALUES ($1, $2)
+		ON CONFLICT (guild_id)
+		DO UPDATE SET
+			log_channel_id = EXCLUDED.log_channel_id;
+	`;
+
+	return (await executeQuery(query, [guildId, channelId])).rows;
+}
+
+export async function getLogChannelForGuild(guildId: Snowflake): Promise<Snowflake | null> {
+	const query = `
+		SELECT log_channel_id FROM guild_settings
+		WHERE guild_id = $1;
+	`;
+
+	const res = (await executeQuery(query, [guildId]));
+
+	return res.rowCount == 0 ? null : res.rows[0].log_channel_id;
 }
 
 export async function answerPuzzle(guildId: Snowflake, userId: Snowflake, answer: string) {

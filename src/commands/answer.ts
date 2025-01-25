@@ -1,7 +1,7 @@
 import { ActionRowBuilder, SlashCommandBuilder, MessageFlags, ModalBuilder, TextInputStyle, EmbedBuilder, TextInputBuilder } from 'discord.js';
 
-import { Command, DeployType } from '../utils.js';
-import { answerPuzzle } from '../db/puzzleRepository.js';
+import { Command, DeployType, getChannelById } from '../utils.js';
+import { answerPuzzle, getLogChannelForGuild } from '../db/puzzleRepository.js';
 import logger from '../logger.js';
 import { getAllTranslations, L, LD, setLocale, unsetLocale } from '../i18n/index.js';
 
@@ -36,10 +36,12 @@ const command: Command = {
 			if (!interaction.isModalSubmit()) return;
 			if (interaction.customId !== 'answer') return;
 
-			const guildId = interaction.guildId ?? "";
+			const guildId = interaction.guildId ?? '';
 			const userId = interaction.user.id;
 			const answer = interaction.fields.getTextInputValue('answerInput');
 			const locale = interaction.locale;
+			const guildLocale = interaction.guildLocale ?? '';
+
 			setLocale(locale);
 
 			try {
@@ -67,6 +69,27 @@ const command: Command = {
 						embeds: embeds
 					});
 					logger.info(`User ${userId} gave a right answer in guild ${guildId}.`)
+
+					try {
+						const logChannelId = await getLogChannelForGuild(guildId);
+						if (logChannelId) {
+							const channel = await getChannelById(interaction.client, logChannelId);
+							if (channel) {
+								setLocale(guildLocale);
+								await channel.send({
+									content: `<@${userId}>${L('commands.answer.log_pre')}${puzzles[0].index}${L('commands.answer.log_post')}`,
+									allowedMentions: {
+										users: [],
+									},
+								});
+							}
+						}
+					} catch (err) {
+						logger.logError(`Could not send log message in guild ${guildId}`, err);
+					}
+					finally {
+						setLocale(locale);
+					}
 				}
 			} catch (err) {
 				logger.logError(`Could not submit answer ${answer} for ${userId} in ${guildId}`, err);
