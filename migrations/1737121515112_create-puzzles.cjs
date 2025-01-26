@@ -66,13 +66,12 @@ exports.up = (pgm) => {
 		$$;
 	`);
 
-	pgm.sql(`
-		CREATE OR REPLACE TRIGGER puzzles_before_insert
-		BEFORE INSERT
-		ON puzzles
-		FOR EACH ROW
-		EXECUTE FUNCTION set_puzzle_index();
-	`);
+	pgm.createTrigger('puzzles', 'puzzles_before_insert_set_index', {
+		when: 'BEFORE',
+		operation: 'INSERT',
+		level: 'ROW',
+		function: 'set_puzzle_index',
+	});
 };
 
 /**
@@ -82,7 +81,7 @@ exports.up = (pgm) => {
  */
 exports.down = (pgm) => {
 	// Drop the trigger
-	pgm.sql(`DROP TRIGGER IF EXISTS puzzles_before_insert ON puzzles;`);
+	pgm.dropTrigger('puzzles', 'puzzles_before_insert_set_index')
 
 	// Drop the trigger function
 	pgm.sql(`DROP FUNCTION IF EXISTS set_puzzle_index;`);
