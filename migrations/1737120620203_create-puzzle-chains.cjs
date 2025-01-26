@@ -11,8 +11,11 @@ exports.shorthands = undefined;
 exports.up = (pgm) => {
 	pgm.createTable('puzzle_chains', {
 		id: {
-			type: 'serial',
+			type: 'integer',
 			primaryKey: true,
+			sequenceGenerated: {
+				precedence: 'BY DEFAULT',
+			}
 		},
 		guild_id: {
 			type: 'varchar(127)',
