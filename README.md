@@ -15,4 +15,4 @@ The best way to run this is by using the tools
 2. create a discord bot in the discord developer portal
 3. copy the token and application-id from your discord-bot to the `.env`
     file (in the respective environment variable)
-4. start the bot with `make restart-d`
+4. start the bot with `make prod` or `make prod-detached`
