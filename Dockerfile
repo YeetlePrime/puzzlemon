@@ -4,3 +4,5 @@ COPY ./package.json .
 RUN npm install --quiet
 COPY . .
 RUN npm run build
+
+CMD ["sh", "-c", "npm run migrate up && npm run prod"]

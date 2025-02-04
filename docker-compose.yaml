@@ -8,11 +8,6 @@ services:
     environment:
       - DB_HOST=db
       - DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@db:${DB_PORT}/${DB_DATABASE}
-    command: >
-      sh -c "
-      npm run migrate up;
-      npm run prod;
-      "
     depends_on:
       db:
         condition: service_healthy
