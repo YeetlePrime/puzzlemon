@@ -4,10 +4,12 @@ script=$(realpath -s "$0")
 script_dir=$(dirname "${script}")
 env_file="${script_dir}/.env"
 
-sudo mkdir -p /etc/containers/systemd/
-sed "s|@ENV_FILE@|${env_file}|g" ./quadlets/puzzlemon-db.volume | sudo tee /etc/containers/systemd/puzzlemon-db.volume >/dev/null
-sed "s|@ENV_FILE@|${env_file}|g" ./quadlets/puzzlemon.network | sudo tee /etc/containers/systemd/puzzlemon.network >dev/null
-sed "s|@ENV_FILE@|${env_file}|g" ./quadlets/puzzlemon-db.container | sudo tee /etc/containers/systemd/puzzlemon-db.container >dev/null
-sed "s|@ENV_FILE@|${env_file}|g" ./quadlets/puzzlemon.container | sudo tee /etc/containers/systemd/puzzlemon.container >dev/null
+target_dir=~/.config/containers/systemd
 
-sudo podman build -t puzzlemon-app .
+mkdir -p "${target_dir}"
+sed "s|@ENV_FILE@|${env_file}|g" ./quadlets/puzzlemon-db.volume >"${target_dir}/puzzlemon-db.volume"
+sed "s|@ENV_FILE@|${env_file}|g" ./quadlets/puzzlemon.network >"${target_dir}/puzzlemon.network"
+sed "s|@ENV_FILE@|${env_file}|g" ./quadlets/puzzlemon-db.container >"${target_dir}/puzzlemon-db.container"
+sed "s|@ENV_FILE@|${env_file}|g" ./quadlets/puzzlemon.container >"${target_dir}/puzzlemon.container"
+
+podman build -t puzzlemon-app .

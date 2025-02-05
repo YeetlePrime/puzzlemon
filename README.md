@@ -20,6 +20,6 @@ Alternatively to step 4 you can enable auto-start for linux systems that use sys
 2. create a discord bot in the discord developer portal
 3. copy the token and application-id from your discord-bot to the `.env`
     file (in the respective environment variable)
-4. use the initialization script `./quadlet.sh`
-5. generate the new services by `sudo systemctl daemon-reload`
-6. enable auto-start for the bot with `sudo systemctl start puzzlemon`
+4. use the initialization script `./quadlet.sh`. This makes the service automatically start on next login.
+5. instantly start the bot by `systemctl --user daemon-reload && systemctl --user start puzzlemon`
+6. if you want the bot to start on boot instead on login, use `loginctl enable-linger <USER>` to make the user linger
