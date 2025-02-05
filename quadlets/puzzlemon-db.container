@@ -1,0 +1,21 @@
+[Unit]
+Description=puzzlemon database
+After=local-fs.target
+
+[Service]
+EnvironmentFile=@ENV_FILE@
+Restart=unless-stopped
+
+[Container]
+Image=docker.io/library/postgres:latest
+Network=puzzlemon.network
+Volume=puzzlemon-db.volume:/var/lib/postgresql/data
+Environment=TZ=${TIMEZONE}
+Environment=POSTGRES_USER=${DB_USER}
+Environment=POSTGRES_PASSWORD=${DB_PASSWORD}
+Environment=POSTGRES_DB=${DB_DATABASE}
+PublishPort=${DB_PORT}:${DB_PORT}
+
+[Install]
+WantedBy=default.target
+

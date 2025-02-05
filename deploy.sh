@@ -11,7 +11,7 @@ export $(cat .env | xargs)
 
 # create network
 if ! podman network exists "${network_name}"; then
-	podman network create "${network_name}" 1> /dev/null
+	podman network create "${network_name}" 1>/dev/null
 	echo "created new network \"${network_name}\"."
 else
 	echo "network \"${network_name}\" already exists."
@@ -19,7 +19,7 @@ fi
 
 # create volume
 if ! podman volume exists "${db_volume}"; then
-	podman volume create "${db_volume}" 1> /dev/null
+	podman volume create "${db_volume}" 1>/dev/null
 	echo "created new volume \"${db_volume}\"."
 else
 	echo "volume \"${db_volume}\" already exists."
@@ -37,7 +37,7 @@ podman run -d --name "${db_name}" \
 	-e POSTGRES_PASSWORD="${DB_PASSWORD}" \
 	-e POSTGRES_DB="${DB_DATABASE}" \
 	-p "${DB_PORT}:${DB_PORT}" \
-	docker.io/library/postgres:latest 1> /dev/null
+	docker.io/library/postgres:latest 1>/dev/null
 echo "started container \"${db_name}\"."
 
 # build app image
@@ -54,6 +54,5 @@ podman run -d --name "${app_name}" \
 	--env-file .env \
 	-e DB_HOST="${db_name}" \
 	-e DATABASE_URL="postgres://${DB_USER}:${DB_PASSWORD}@${db_name}:${DB_PORT}/${DB_DATABASE}" \
-	"${app_name}" 1> /dev/null
+	"${app_name}" 1>/dev/null
 echo "started container \"${app_name}\"."
-

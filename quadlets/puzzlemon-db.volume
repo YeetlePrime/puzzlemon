@@ -1,0 +1,6 @@
+[Unit]
+Description=puzzlemon database volume
+After=local-fs.target
+
+[Volume]
+Driver=local
