@@ -16,4 +16,6 @@ Environment=POSTGRES_USER=${DB_USER}
 Environment=POSTGRES_PASSWORD=${DB_PASSWORD}
 Environment=POSTGRES_DB=${DB_DATABASE}
 PublishPort=${DB_PORT}:${DB_PORT}
+LogDriver=k8s-file
+LogOpt=path=@PODMAN_LOG_DIR@/puzzlemon-db.log
 
