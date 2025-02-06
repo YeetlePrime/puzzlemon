@@ -3,7 +3,7 @@
 title="puzzlemon"
 
 db_name="${title}-db"
-db_volume="${db_name}-volume"
+db_volume="${db_name}"
 app_name="${title}-app"
 network_name="${title}-network"
 
