@@ -1,0 +1,21 @@
+[Unit]
+Description=the puzzlemon discord bot application
+After=local-fs.target
+Requires=puzzlemon-db.service
+After=puzzlemon-db.service
+
+[Service]
+EnvironmentFile=@ENV_FILE@
+Restart=always
+
+[Container]
+ContainerName=puzzlemon-app
+Image=puzzlemon-app.build
+Network=puzzlemon.network
+EnvironmentFile=@ENV_FILE@
+Environment=DB_HOST=puzzlemon-db
+Environment=DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@puzzlemon-db:${DB_PORT}/${DB_DATABASE}
+
+[Install]
+WantedBy=multi-user.target
+

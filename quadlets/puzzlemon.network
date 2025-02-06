@@ -1,5 +1,5 @@
 [Unit]
-Description=puzzlemon network
+Description=the podman network used by puzzlemon app and db
 
 [Network]
-Driver=bridge
+NetworkName=puzzlemon

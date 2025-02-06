@@ -3,4 +3,4 @@ Description=puzzlemon database volume
 After=local-fs.target
 
 [Volume]
-Driver=local
+VolumeName=puzzlemon-db

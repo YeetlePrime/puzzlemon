@@ -1,0 +1,7 @@
+[Unit]
+Description=builds the image for the puzzlemon app
+
+[Build]
+ImageTag=localhost/puzzlemon-app
+File=@CONTAINER_FILE@
+SetWorkingDirectory=file

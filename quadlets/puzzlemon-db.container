@@ -1,12 +1,13 @@
 [Unit]
-Description=puzzlemon database
+Description=the postgres database for the puzzlemon discord bot
 After=local-fs.target
 
 [Service]
 EnvironmentFile=@ENV_FILE@
-Restart=unless-stopped
+Restart=always
 
 [Container]
+ContainerName=puzzlemon-db
 Image=docker.io/library/postgres:latest
 Network=puzzlemon.network
 Volume=puzzlemon-db.volume:/var/lib/postgresql/data
@@ -15,7 +16,4 @@ Environment=POSTGRES_USER=${DB_USER}
 Environment=POSTGRES_PASSWORD=${DB_PASSWORD}
 Environment=POSTGRES_DB=${DB_DATABASE}
 PublishPort=${DB_PORT}:${DB_PORT}
-
-[Install]
-WantedBy=default.target
 
