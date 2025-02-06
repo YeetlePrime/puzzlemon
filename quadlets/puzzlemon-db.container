@@ -17,3 +17,5 @@ Environment=POSTGRES_PASSWORD=${DB_PASSWORD}
 Environment=POSTGRES_DB=${DB_DATABASE}
 PublishPort=${DB_PORT}:${DB_PORT}
 
+[Install]
+WantedBy=default.target

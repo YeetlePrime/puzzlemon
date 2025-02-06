@@ -17,5 +17,5 @@ Environment=DB_HOST=puzzlemon-db
 Environment=DATABASE_URL=postgres://${DB_USER}:${DB_PASSWORD}@puzzlemon-db:${DB_PORT}/${DB_DATABASE}
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
 
