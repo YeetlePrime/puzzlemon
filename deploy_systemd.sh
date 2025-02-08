@@ -28,7 +28,7 @@ replace_and_copy() {
 
 mkdir -p "${target_dir}"
 mkdir -p "${podman_log_dir}"
-chmod 666 "${podman_log_dir}"
+chmod 777 "${podman_log_dir}"
 
 for file in "${script_dir}/quadlets/"*; do
 	replace_and_copy "${file}"
